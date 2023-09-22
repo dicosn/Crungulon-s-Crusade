@@ -1,4 +1,27 @@
-[gd_scene format=3 uid="uid://dsvkddsf8svbl"]
+[gd_scene load_steps=3 format=3 uid="uid://dsvkddsf8svbl"]
+
+[ext_resource type="Script" path="res://scripts/ButtonScript.cs" id="1_cnx7r"]
+
+[sub_resource type="CSharpScript" id="CSharpScript_nrktk"]
+script/source = "using Godot;
+using System;
+
+public partial class text_behavior : Node
+{
+	// Called when the node enters the scene tree for the first time.
+	public override void _Ready()
+	{
+		var newPosition = Position;
+		newPosition.X = 100.0f;
+		Position = newPosition;
+	}
+
+	// Called every frame. 'delta' is the elapsed time since the previous frame.
+	public override void _Process(double delta)
+	{
+	}
+}
+"
 
 [node name="Node2D" type="Node2D"]
 
@@ -7,3 +30,11 @@ offset_right = 40.0
 offset_bottom = 23.0
 theme_type_variation = &"HeaderLarge"
 text = "Wow I smell something lovely!"
+script = SubResource("CSharpScript_nrktk")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Button" type="Button" parent="."]
+offset_right = 8.0
+offset_bottom = 8.0
+script = ExtResource("1_cnx7r")
