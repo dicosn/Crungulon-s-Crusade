@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://d1d2ra2ywdbjk"]
+
+[ext_resource type="Script" path="res://button.gd" id="1_i6fil"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_qx13t"]
+
+[node name="Button" type="Button"]
+material = SubResource("CanvasItemMaterial_qx13t")
+offset_left = 160.0
+offset_top = -4.0
+offset_right = 460.0
+offset_bottom = 296.0
+script = ExtResource("1_i6fil")
+
+[node name="Node" type="Node" parent="."]
