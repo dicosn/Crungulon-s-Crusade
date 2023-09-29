@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dsvkddsf8svbl"]
+[gd_scene load_steps=4 format=3 uid="uid://dsvkddsf8svbl"]
 
 [ext_resource type="Script" path="res://Scripts/Area2D.cs" id="1_6r6en"]
 [ext_resource type="Texture2D" uid="uid://bu4e1x8qnoby6" path="res://Assets/l01_default sprite tilemap1.png" id="2_m4k3y"]
+[ext_resource type="Shape2D" uid="uid://sbcpthad14rr" path="res://Assets/Shapes/new_rectangle_shape_2d.tres" id="3_je2v7"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -12,9 +13,12 @@ theme_type_variation = &"HeaderLarge"
 text = "Wow I smell something lovely!"
 
 [node name="Area2D" type="Area2D" parent="."]
+position = Vector2(20, 50)
+gravity_space_override = 1
 script = ExtResource("1_6r6en")
 
 [node name="Sprite2D" type="Sprite2D" parent="Area2D"]
 texture = ExtResource("2_m4k3y")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = ExtResource("3_je2v7")
