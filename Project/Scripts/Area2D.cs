@@ -29,7 +29,7 @@ public partial class Area2D : Godot.Area2D
 	public override void _PhysicsProcess(double delta)
 	{
 		
-		Vector2 velocity = new Vector2(); // The player's movement vector.
+		 	Vector2 velocity = new Vector2(); // The player's movement vector.
 		
 		if (Input.IsActionPressed("move_right"))
 		{
@@ -42,7 +42,8 @@ public partial class Area2D : Godot.Area2D
 		}		
 		//velocity.Y += Gravity;
 		
-		MoveAndSlide();
+		//MoveAndSlide();
+		//MoveAndCollide(new Vector2(0, 1));
 		
 		
 
