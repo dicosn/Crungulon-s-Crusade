@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bgwx8g6j7638t" path="res://Assets/Character Sprites/l0_DefaultCharacter1.png" id="2_m2glp"]
 [ext_resource type="Texture2D" uid="uid://ltgiudj4onro" path="res://Assets/Character Sprites/l3_DefaultCharacter1.png" id="3_eff0n"]
 [ext_resource type="Texture2D" uid="uid://lap5ibg63ucx" path="res://Assets/Character Sprites/l4_DefaultCharacter1.png" id="4_ftvtr"]
-[ext_resource type="TileSet" uid="uid://dr3almj30uqtv" path="res://new_tile_set.tres" id="5_o234r"]
+[ext_resource type="TileSet" uid="uid://cr8v7t8tse0ng" path="res://new_tile_set.tres" id="5_o234r"]
 
 [sub_resource type="Theme" id="Theme_fy6vt"]
 default_font_size = 400
