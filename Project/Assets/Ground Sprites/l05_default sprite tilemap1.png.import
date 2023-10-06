@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://druc3c0ybtvq5"
-path="res://.godot/imported/l07_default sprite tilemap1.png-ffff4cc8c6100c32cd57d5b59cdec9a8.ctex"
+uid="uid://da3indul42jxg"
+path="res://.godot/imported/l05_default sprite tilemap1.png-b653586180f9208856f3ef25358d5b1a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/l07_default sprite tilemap1.png"
-dest_files=["res://.godot/imported/l07_default sprite tilemap1.png-ffff4cc8c6100c32cd57d5b59cdec9a8.ctex"]
+source_file="res://Assets/Ground Sprites/l05_default sprite tilemap1.png"
+dest_files=["res://.godot/imported/l05_default sprite tilemap1.png-b653586180f9208856f3ef25358d5b1a.ctex"]
 
 [params]
 
