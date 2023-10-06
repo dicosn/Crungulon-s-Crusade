@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://cwtpc2pv57cng"]
+
+[ext_resource type="Texture2D" uid="uid://i5xuo355miv2" path="res://rest].png" id="1_hwwkp"]
+[ext_resource type="Script" path="res://button.cs" id="1_w06av"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_dqtmy"]
+blend_mode = 1
+
+[sub_resource type="Theme" id="Theme_55neq"]
+
+[node name="Button" type="Button"]
+modulate = Color(0.0666667, 1, 1, 1)
+self_modulate = Color(1, 0.466667, 1, 1)
+top_level = true
+light_mask = 15
+visibility_layer = 15
+material = SubResource("CanvasItemMaterial_dqtmy")
+use_parent_material = true
+anchors_preset = -1
+anchor_right = 0.902
+anchor_bottom = 1.09
+offset_right = 172.896
+offset_bottom = -28.32
+theme = SubResource("Theme_55neq")
+text = "Click ME
+"
+icon = ExtResource("1_hwwkp")
+script = ExtResource("1_w06av")
