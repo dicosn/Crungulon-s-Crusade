@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bu4e1x8qnoby6"
-path="res://.godot/imported/l01_default sprite tilemap1.png-d667c883d38a9ffc6dfdf40c1f7ccdef.ctex"
+uid="uid://c4e1epb315tss"
+path="res://.godot/imported/GroundBlock1small.png-e1d861b9b20c58019ddc2267679c8071.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/l01_default sprite tilemap1.png"
-dest_files=["res://.godot/imported/l01_default sprite tilemap1.png-d667c883d38a9ffc6dfdf40c1f7ccdef.ctex"]
+source_file="res://Assets/Ground Sprites/GroundBlock1small.png"
+dest_files=["res://.godot/imported/GroundBlock1small.png-e1d861b9b20c58019ddc2267679c8071.ctex"]
 
 [params]
 
