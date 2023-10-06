@@ -17,7 +17,7 @@ public partial class CharacterBody2D : Godot.CharacterBody2D
 		// get sprite references
 		_idleSprite = GetNode<Sprite2D>("IdleSprite");
 		_rightSprite = GetNode<Sprite2D>("RightSprite");
-		_leftSprite = GetNode<Sprite2D>("LeftSprite");
+		//_leftSprite = GetNode<Sprite2D>("LeftSprite");
 		_jumpSprite = GetNode<Sprite2D>("JumpSprite");
 	}
 	
