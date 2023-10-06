@@ -29,30 +29,26 @@ vertical_alignment = 1
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 z_index = 2
 position = Vector2(300, 400)
+scale = Vector2(3, 3)
 script = ExtResource("1_6tjxd")
 
 [node name="IdleSprite" type="Sprite2D" parent="CharacterBody2D"]
-scale = Vector2(1.5, 1.5)
 texture = ExtResource("2_m2glp")
 
 [node name="RightSprite" type="Sprite2D" parent="CharacterBody2D"]
 visible = false
-scale = Vector2(1.5, 1.5)
 texture = ExtResource("3_eff0n")
 
 [node name="LeftSprite" type="Sprite2D" parent="CharacterBody2D"]
 visible = false
-scale = Vector2(1.5, 1.5)
 texture = ExtResource("4_ftvtr")
 
 [node name="JumpSprite" type="Sprite2D" parent="CharacterBody2D"]
 visible = false
 position = Vector2(0, -20)
-scale = Vector2(1.5, 1.5)
 texture = ExtResource("5_63i2p")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-scale = Vector2(1.5, 1.5)
 shape = SubResource("CircleShape2D_pdsv8")
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
