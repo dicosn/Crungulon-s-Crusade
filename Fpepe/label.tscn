@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cpqhabbge3r2p"]
+
+[ext_resource type="Script" path="res://label.gd" id="1_oo7o5"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_r7snq"]
+font_size = 40
+
+[node name="Label" type="Label"]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "100"
+label_settings = SubResource("LabelSettings_r7snq")
+script = ExtResource("1_oo7o5")
