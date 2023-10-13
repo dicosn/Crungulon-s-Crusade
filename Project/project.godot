@@ -15,6 +15,13 @@ run/main_scene="res://node_2d.tscn"
 config/features=PackedStringArray("4.1", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
+[display]
+
+window/size/viewport_width=2600
+window/size/viewport_height=1800
+window/size/initial_position_type=0
+window/vsync/vsync_mode=0
+
 [dotnet]
 
 project/assembly_name="Crungulon-s-crusade"

@@ -3,15 +3,17 @@ using System;
 
 public partial class CharacterBody2D : Godot.CharacterBody2D
 {
-	public float gravity = 3000;   //ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
+	public int gravity = 3000;   //ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
 	public int wspeed { get; set; } = 800;
 	public int jumpvelocity { get; set; } = 1200;
 	public bool canJump = false;
+	
 	
 	private Sprite2D _idleSprite;
 	private Sprite2D _rightSprite;
 	private Sprite2D _leftSprite;
 	private Sprite2D _jumpSprite;
+	private Timer _CoyoteTime;
 	
 	public override void _Ready()
 	{
@@ -20,6 +22,7 @@ public partial class CharacterBody2D : Godot.CharacterBody2D
 		_rightSprite = GetNode<Sprite2D>("RightSprite");
 		//_leftSprite = GetNode<Sprite2D>("LeftSprite");
 		_jumpSprite = GetNode<Sprite2D>("JumpSprite");
+	
 	}
 	
 	public override void _PhysicsProcess(double delta)
@@ -29,6 +32,7 @@ public partial class CharacterBody2D : Godot.CharacterBody2D
 		if (!IsOnFloor()){ 
 			if(canJump){
 				canJump = false;
+				
 			}
 			velocity.Y += (float)delta * gravity; 
 		}
@@ -37,8 +41,15 @@ public partial class CharacterBody2D : Godot.CharacterBody2D
 			if(Input.IsKeyPressed(Key.Space)){
 				velocity.Y = -jumpvelocity; 
 			}
-			velocity.Y = -jumpvelocity; 
-		}		
+			//velocity.Y = -jumpvelocity; 
+		}	/*	
+		if (!IsOnFloor())
+			{ velocity.Y += (float)delta * gravity; }
+
+		if (Input.IsKeyPressed(Key.Space) && IsOnFloor())
+			{ velocity.Y = -jumpvelocity; }*/
+			
+			
 		if (Input.IsActionPressed("move_right")){ 
 			velocity.X = wspeed; 
 		}
