@@ -22,19 +22,24 @@ public partial class CharacterBody2D : Godot.CharacterBody2D
 		_rightSprite = GetNode<Sprite2D>("RightSprite");
 		//_leftSprite = GetNode<Sprite2D>("LeftSprite");
 		_jumpSprite = GetNode<Sprite2D>("JumpSprite");
-	
+		_CoyoteTime = GetNode<Timer>("CoyoteTime");
 	}
 	
 	public override void _PhysicsProcess(double delta)
 	{
 		var velocity = Velocity;
-		
+				
 		if (!IsOnFloor()){ 
 			if(canJump){
-				canJump = false;
-				
+				_CoyoteTime.Start();
 			}
-			velocity.Y += (float)delta * gravity; 
+			if(Input.IsKeyPressed(Key.Space) && !_CoyoteTime.IsStopped() && canJump){
+				canJump = false;
+				velocity.Y = -jumpvelocity; 
+			}
+			else{
+				velocity.Y += (float)delta * gravity; 
+			}
 		}
 		else{
 			canJump = true;
