@@ -24,6 +24,7 @@ CharacterBody2d="*res://Scripts/CharacterBody2D.cs"
 window/size/viewport_width=2600
 window/size/viewport_height=1800
 window/size/initial_position_type=0
+window/vsync/vsync_mode=0
 
 [dotnet]
 

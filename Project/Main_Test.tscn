@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://cirdy2tvrl1ng"]
+
+[node name="Main_Test" type="Node"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TitleLabel" type="Label" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Crungulon's Crucade"
+
+[node name="GroundTileMap" type="TileMap" parent="."]
+format = 2
