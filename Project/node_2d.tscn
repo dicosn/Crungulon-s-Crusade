@@ -1,13 +1,15 @@
-[gd_scene load_steps=11 format=3 uid="uid://dsvkddsf8svbl"]
+[gd_scene load_steps=13 format=3 uid="uid://dsvkddsf8svbl"]
 
 [ext_resource type="Script" path="res://Scripts/Area2D.cs" id="1_6r6en"]
 [ext_resource type="Script" path="res://Scripts/CharacterBody2D.cs" id="1_6tjxd"]
 [ext_resource type="Texture2D" uid="uid://bgwx8g6j7638t" path="res://Assets/Character Sprites/l0_DefaultCharacter1.png" id="2_m2glp"]
 [ext_resource type="Texture2D" uid="uid://ltgiudj4onro" path="res://Assets/Character Sprites/l3_DefaultCharacter1.png" id="3_eff0n"]
 [ext_resource type="Texture2D" uid="uid://lap5ibg63ucx" path="res://Assets/Character Sprites/l4_DefaultCharacter1.png" id="4_ftvtr"]
-[ext_resource type="TileSet" uid="uid://dr3almj30uqtv" path="res://new_tile_set.tres" id="5_o234r"]
+[ext_resource type="TileSet" uid="uid://cr8v7t8tse0ng" path="res://new_tile_set.tres" id="5_o234r"]
 [ext_resource type="Script" path="res://Enemy.cs" id="7_g2x24"]
 [ext_resource type="Script" path="res://CanvasLayer.cs" id="8_3swb7"]
+[ext_resource type="Script" path="res://XAxisLabel.gd" id="9_kn1v1"]
+[ext_resource type="Script" path="res://FPScounter.gd" id="9_nhqk4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_14k1f"]
 
@@ -96,12 +98,15 @@ vertical_alignment = 1
 offset_right = 40.0
 offset_bottom = 23.0
 text = "x axis:"
+script = ExtResource("9_kn1v1")
 
-[node name="Y Axis Label" type="Label" parent="CanvasLayer"]
-offset_top = 40.0
-offset_right = 48.0
-offset_bottom = 66.0
-text = "y axis:"
+[node name="FPScounter" type="Label" parent="CanvasLayer"]
+offset_left = 1.0
+offset_top = 24.0
+offset_right = 49.0
+offset_bottom = 50.0
+text = "100"
+script = ExtResource("9_nhqk4")
 
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
 [connection signal="body_exited" from="Area2D" to="Area2D" method="_on_body_exited"]

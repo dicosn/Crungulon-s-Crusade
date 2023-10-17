@@ -1,17 +1,16 @@
 using Godot;
 using System;
 
+
 public partial class CharacterBody2D : Godot.CharacterBody2D
 {
 	public float gravity = 3000;   //ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
 	public int wspeed { get; set; } = 800;
 	public int jumpvelocity { get; set; } = 1200;
-	
 	private Sprite2D _idleSprite;
 	private Sprite2D _rightSprite;
 	private Sprite2D _leftSprite;
 	private Sprite2D _jumpSprite;
-	
 	public override void _Ready()
 	{
 		// get sprite references
