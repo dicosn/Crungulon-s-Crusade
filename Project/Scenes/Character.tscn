@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://bj8wa1vw6x6ha"]
+
+[ext_resource type="Texture2D" uid="uid://bgwx8g6j7638t" path="res://Assets/Character Sprites/l0_DefaultCharacter1.png" id="1_yf8bj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x427m"]
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_x427m")
+
+[node name="IdleSprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_yf8bj")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -150)
+position_smoothing_enabled = true
+drag_vertical_enabled = true
+drag_top_margin = 0.3
+drag_bottom_margin = 0.0
