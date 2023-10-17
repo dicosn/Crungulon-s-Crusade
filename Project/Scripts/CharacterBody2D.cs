@@ -4,7 +4,7 @@ using System;
 public partial class CharacterBody2D : Godot.CharacterBody2D
 {
 	public int gravity = 3000;   //ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
-	public int wspeed { get; set; } = 800;
+	public int wspeed { get; set; } = 850;
 	public int jumpvelocity { get; set; } = 1200;
 	public bool canJump = false;
 	
