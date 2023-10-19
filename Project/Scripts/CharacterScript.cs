@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class CharacterBody2D : Godot.CharacterBody2D
+public partial class CharacterScript : CharacterBody2D
 {
 	public int gravity = 3000;   //ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
 	public int wspeed { get; set; } = 850;
@@ -11,7 +11,6 @@ public partial class CharacterBody2D : Godot.CharacterBody2D
 	
 	private Sprite2D _idleSprite;
 	private Sprite2D _rightSprite;
-	private Sprite2D _leftSprite;
 	private Sprite2D _jumpSprite;
 	private Timer _CoyoteTime;
 	
@@ -20,7 +19,6 @@ public partial class CharacterBody2D : Godot.CharacterBody2D
 		// get sprite references
 		_idleSprite = GetNode<Sprite2D>("IdleSprite");
 		_rightSprite = GetNode<Sprite2D>("RightSprite");
-		//_leftSprite = GetNode<Sprite2D>("LeftSprite");
 		_jumpSprite = GetNode<Sprite2D>("JumpSprite");
 		_CoyoteTime = GetNode<Timer>("CoyoteTime");
 	}
@@ -61,14 +59,12 @@ public partial class CharacterBody2D : Godot.CharacterBody2D
 		else if (Input.IsActionPressed("move_left")){ 
 			velocity.X = -wspeed;
 		}	
-		
 		else { 
 			velocity.X = 0; 
 		}
 			
 		_UpdateSpriteRenderer(velocity.X,velocity.Y);
-		//_UpdateSpriteRendererY(velocity.Y);
-		
+				
 		Velocity = velocity;
 		MoveAndSlide();
 	}
@@ -87,3 +83,4 @@ public partial class CharacterBody2D : Godot.CharacterBody2D
 		}
 	}	
 }
+

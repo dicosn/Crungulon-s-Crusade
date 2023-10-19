@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://bj8wa1vw6x6ha"]
+
+[ext_resource type="Script" path="res://Scripts/CharacterScript.cs" id="1_46rwd"]
+[ext_resource type="Texture2D" uid="uid://bgwx8g6j7638t" path="res://Assets/Character Sprites/l0_DefaultCharacter1.png" id="1_yf8bj"]
+[ext_resource type="Texture2D" uid="uid://ltgiudj4onro" path="res://Assets/Character Sprites/l3_DefaultCharacter1.png" id="3_mf24n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_74hic"]
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+scale = Vector2(3, 3)
+script = ExtResource("1_46rwd")
+
+[node name="IdleSprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_yf8bj")
+
+[node name="RightSprite" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("3_mf24n")
+
+[node name="JumpSprite" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("1_yf8bj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_74hic")
+
+[node name="CoyoteTime" type="Timer" parent="."]
+wait_time = 0.15
+one_shot = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+drag_vertical_enabled = true
+drag_top_margin = 0.3
