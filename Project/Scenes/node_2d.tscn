@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dsvkddsf8svbl"]
+[gd_scene load_steps=12 format=3 uid="uid://dsvkddsf8svbl"]
 
 [ext_resource type="Script" path="res://Scripts/CharacterBody2D.cs" id="1_nvvid"]
 [ext_resource type="Texture2D" uid="uid://bgwx8g6j7638t" path="res://Assets/Character Sprites/l0_DefaultCharacter1.png" id="2_fgyky"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://Scripts/Area2D.cs" id="5_ex8k4"]
 [ext_resource type="TileSet" uid="uid://djsrcvgw8iqnd" path="res://new_tile_set.tres" id="6_tkr5p"]
 [ext_resource type="Script" path="res://Scripts/Label2.gd" id="7_0vn4x"]
+[ext_resource type="Script" path="res://Scenes/Location Tracker.gd" id="8_ip0qh"]
 
 [sub_resource type="Theme" id="Theme_fy6vt"]
 default_font_size = 400
@@ -89,6 +90,14 @@ offset_bottom = 23.0
 text = "100"
 label_settings = SubResource("LabelSettings_kiqgg")
 script = ExtResource("7_0vn4x")
+
+[node name="Location Tracker" type="Label" parent="."]
+offset_left = 6.0
+offset_top = 51.0
+offset_right = 122.0
+offset_bottom = 113.0
+text = "Location:"
+script = ExtResource("8_ip0qh")
 
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
 [connection signal="body_exited" from="Area2D" to="Area2D" method="_on_body_exited"]
