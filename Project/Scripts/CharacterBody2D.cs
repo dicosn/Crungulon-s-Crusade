@@ -1,65 +1,64 @@
 using Godot;
 using System;
 
+
 public partial class CharacterBody2D : Godot.CharacterBody2D
 {
 	public int gravity = 3000;   //ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
 	public int wspeed { get; set; } = 850;
-	public int jumpvelocity { get; set; } = 1200;
-	public bool canJump = false;
+	public int jumpvelocity { get; set; } = 1300;
+	public int accel = 50;
 	
 	
 	private Sprite2D _idleSprite;
 	private Sprite2D _rightSprite;
 	private Sprite2D _leftSprite;
 	private Sprite2D _jumpSprite;
-	private Timer _CoyoteTime;
+	private float air_time = 0.0f;
+	private float ct_thresh = 0.067f;
 	
 	public override void _Ready()
 	{
+		
 		// get sprite references
 		_idleSprite = GetNode<Sprite2D>("IdleSprite");
 		_rightSprite = GetNode<Sprite2D>("RightSprite");
 		//_leftSprite = GetNode<Sprite2D>("LeftSprite");
 		_jumpSprite = GetNode<Sprite2D>("JumpSprite");
-		_CoyoteTime = GetNode<Timer>("CoyoteTime");
+		
 	}
 	
 	public override void _PhysicsProcess(double delta)
 	{
 		var velocity = Velocity;
-				
+		
+		//air behavior
 		if (!IsOnFloor()){ 
-			if(canJump){
-				_CoyoteTime.Start();
-			}
-			if(Input.IsKeyPressed(Key.Space) && !_CoyoteTime.IsStopped() && canJump){
-				canJump = false;
+			//time spent airborn
+			air_time += (float)delta;
+			//jump while airtime below the coyote time threshhold
+			if(Input.IsKeyPressed(Key.Space) && air_time <= ct_thresh){
 				velocity.Y = -jumpvelocity; 
 			}
-			else{
+			else{//fall normal style
 				velocity.Y += (float)delta * gravity; 
 			}
 		}
-		else{
-			canJump = true;
+		else{//dont fall, but jump when necessary
+			air_time = 0;
 			if(Input.IsKeyPressed(Key.Space)){
 				velocity.Y = -jumpvelocity; 
 			}
-			//velocity.Y = -jumpvelocity; 
-		}	/*	
-		if (!IsOnFloor())
-			{ velocity.Y += (float)delta * gravity; }
-
-		if (Input.IsKeyPressed(Key.Space) && IsOnFloor())
-			{ velocity.Y = -jumpvelocity; }*/
-			
-			
+		}		
+		
+		//horizontal motion
 		if (Input.IsActionPressed("move_right")){ 
-			velocity.X = wspeed; 
-		}
+			//player initially has 0 velocity,
+			//makes it so it will reach max velocity after a few frames
+			velocity.X = Math.Min(velocity.X + accel,wspeed); 
+		}//mirrored rightward motion
 		else if (Input.IsActionPressed("move_left")){ 
-			velocity.X = -wspeed;
+			velocity.X = Math.Max(velocity.X - accel,-wspeed); ;
 		}	
 		
 		else { 
@@ -86,4 +85,8 @@ public partial class CharacterBody2D : Godot.CharacterBody2D
 			_rightSprite.FlipH = velX < 0;
 		}
 	}	
+	/*private void _on_coyote_time_timeout()
+	{
+		canJump = false;
+	}*/
 }
