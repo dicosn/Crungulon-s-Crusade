@@ -3,6 +3,9 @@ using System;
 
 public partial class CharacterScript : CharacterBody2D
 {
+	[Signal]
+	public delegate void HitEventHandler();
+	
 	public int gravity = 3000;   //ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
 	public int wspeed { get; set; } = 850;
 	public int jumpvelocity { get; set; } = 1300;

@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://cirdy2tvrl1ng"]
+[gd_scene load_steps=10 format=3 uid="uid://cirdy2tvrl1ng"]
 
 [ext_resource type="Script" path="res://Scripts/Main_Test.cs" id="1_3cprv"]
 [ext_resource type="TileSet" uid="uid://djsrcvgw8iqnd" path="res://new_tile_set.tres" id="1_ffq8e"]
+[ext_resource type="PackedScene" uid="uid://ww3yhjs1hn2w" path="res://Scenes/enemy_level.tscn" id="2_gr7k8"]
 [ext_resource type="PackedScene" uid="uid://bj8wa1vw6x6ha" path="res://Scenes/Character.tscn" id="3_b8g3r"]
 [ext_resource type="Script" path="res://Scripts/Label2.gd" id="3_noddq"]
 
@@ -26,8 +27,15 @@ shadow_offset = Vector2(10, 10)
 [sub_resource type="LabelSettings" id="LabelSettings_8u2tf"]
 font_size = 40
 
+[sub_resource type="Curve2D" id="Curve2D_bjxn4"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 1550, 0, 0, 0, 0, 1000, 1550)
+}
+point_count = 2
+
 [node name="Main_Test" type="Node"]
 script = ExtResource("1_3cprv")
+enemy_level = ExtResource("2_gr7k8")
 Character = ExtResource("3_b8g3r")
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("3_b8g3r")]
@@ -59,3 +67,11 @@ layer_0/tile_data = PackedInt32Array(1638400, 12, 0, 1638401, 12, 0, 1638402, 12
 
 [node name="PlayerStartPosition" type="Marker2D" parent="."]
 position = Vector2(500, 1200)
+
+[node name="MobPath" type="Path2D" parent="."]
+curve = SubResource("Curve2D_bjxn4")
+
+[node name="MobSpawnLocation" type="PathFollow2D" parent="MobPath"]
+position = Vector2(0, 1550)
+
+[connection signal="Hit" from="CharacterBody2D" to="." method="gameOver"]
