@@ -11,6 +11,9 @@ public partial class CharacterScript : CharacterBody2D
 	public int wspeed { get; set; } = 1000;
 	public int accel = 50;
 	
+	//stats for displau
+	public int velocityY = 0;
+	public int velocityX = 0;
 	
 	private Sprite2D _idleSprite;
 	private Sprite2D _rightSprite;
@@ -71,6 +74,8 @@ public partial class CharacterScript : CharacterBody2D
 		//_UpdateSpriteRendererY(velocity.Y);
 		
 		Velocity = velocity;
+		velocityY = velocity.Y;
+		velocityX = velocity.X;
 		MoveAndSlide();
 	}
 	private void _UpdateSpriteRenderer(float velX, float velY) {
