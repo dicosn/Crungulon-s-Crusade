@@ -3,11 +3,17 @@ using System;
 
 public partial class CharacterScript : CharacterBody2D
 {
-	public int gravity = 3000;   //ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
-	public int wspeed { get; set; } = 850;
-	public int jumpvelocity { get; set; } = 1300;
+	[Signal]
+	public delegate void HitEventHandler();
+	
+	public int jumpvelocity { get; set; } = 700;
+	public int gravity = 3500;   //ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
+	public int wspeed { get; set; } = 1000;
 	public int accel = 50;
 	
+	//stats for displau
+	public int velocityY = 0;
+	public int velocityX = 0;
 	
 	private Sprite2D _idleSprite;
 	private Sprite2D _rightSprite;
@@ -18,7 +24,7 @@ public partial class CharacterScript : CharacterBody2D
 	
 	public override void _Ready()
 	{
-		
+		//gravity = 5*jumpvelocity;
 		// get sprite references
 		_idleSprite = GetNode<Sprite2D>("IdleSprite");
 		_rightSprite = GetNode<Sprite2D>("RightSprite");
@@ -68,6 +74,8 @@ public partial class CharacterScript : CharacterBody2D
 		//_UpdateSpriteRendererY(velocity.Y);
 		
 		Velocity = velocity;
+		velocityY = velocity.Y;
+		velocityX = velocity.X;
 		MoveAndSlide();
 	}
 	private void _UpdateSpriteRenderer(float velX, float velY) {
