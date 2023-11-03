@@ -7,46 +7,75 @@ public partial class Main_Test : Node
 	public PackedScene enemy_level { get; set; }
 	[Export]
 	public PackedScene Character { get; set; }
-	
+		
+
+public override void _Ready()
+{
+	NewGame();
+}
+
 	public void NewGame() {
 
-		var player = GetNode<CharacterBody2D>("Character");
+		var player = GetNode<CharacterBody2D>("Character/CharacterBody2D");
 		var startPosition = GetNode<Marker2D>("PlayerStartPosition");
 		player.Position = startPosition.Position;
-
-		//GetNode<Timer>("StartTimer").Start();
+		
+		GetNode<Timer>("StartTimer").Start();
 }
-	public void OnMobTimerTimeout()
-{
-	// Note: Normally it is best to use explicit types rather than the `var`
-	// keyword. However, var is acceptable to use here because the types are
-	// obviously Mob and PathFollow2D, since they appear later on the line.
 
-	// Create a new instance of the Mob scene.
-	Mob mob = enemy_level.Instantiate<Mob>();
+private void _on_mob_timer_timeout()
+{
 
 	// Choose a random location on Path2D.
 	var mobSpawnLocation = GetNode<PathFollow2D>("MobPath/MobSpawnLocation");
+	var mobEndLocation = GetNode<PathFollow2D>("MobPath/MobEndLocation");
 	//mobSpawnLocation.ProgressRatio = GD.Randf();
+	
+	Vector2 startingPosition = mobSpawnLocation.GlobalPosition;
+	Vector2 endingPosition = mobEndLocation.GlobalPosition;
+	
+	GD.Print("start location",startingPosition);
+	GD.Print("stop location",endingPosition);
+	
+	Mob mob = enemy_level.Instantiate<Mob>();
+	
+	
+	//mobSpawnLocation.ProgressRatio = GD.Randf();
+			//GD.Print("mob's initial position", mob.GlobalPosition);
 
-	// Set the mob's direction perpendicular to the path direction.
-	float direction = mobSpawnLocation.Rotation + Mathf.Pi / 2;
+	Vector2 direction = (endingPosition - startingPosition).Normalized();
+			GD.Print("direction", direction);
+	mob.GlobalPosition = startingPosition;
+	
+	float distance = startingPosition.DistanceTo(endingPosition);
+			GD.Print("distance",distance);
 
-	// Set the mob's position to a random location.
-	mob.Position = mobSpawnLocation.Position;
-
-	// Choose the velocity.
-	var velocity = new Vector2((float)GD.RandRange(150.0, 250.0), 0);
+	float timeToCoverDistance = 30.0f; // Adjust as needed
+	float speed = distance / timeToCoverDistance;
+			GD.Print("speed",speed);
+	
+	Vector2 velocity = direction * speed;
+	//var velocity = new Vector2(direction*speed, 0);
+	
+	mob.Velocity += velocity;
 	//mob.LinearVelocity = velocity.Rotated(direction);
-
+			GD.Print("velocity", velocity);
+			GD.Print("mob's position after setting velocity", mob.GlobalPosition);
+	
 	// Spawn the mob by adding it to the Main scene.
-	AddChild(mob);
+	AddChild(mob);	
+	
 }
-private void gameOver()
+
+public void _on_start_timer_timeout()
 {
-	// Replace with function body.
+	GetNode<Timer>("MobTimer").Start();
+	//GetNode<Timer>("ScoreTimer").Start();
+}
+
+public void gameOver()
+{
+	GetNode<Timer>("MobTimer").Stop();
+	GetTree().CallGroup("mobs", Node.MethodName.QueueFree);
 }
 }
-
-
-

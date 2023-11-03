@@ -9,6 +9,7 @@
 [node name="CharacterBody2D" type="CharacterBody2D"]
 scale = Vector2(3, 3)
 script = ExtResource("1_46rwd")
+metadata/_edit_group_ = true
 
 [node name="IdleSprite" type="Sprite2D" parent="."]
 texture = ExtResource("1_yf8bj")
@@ -31,3 +32,5 @@ one_shot = true
 [node name="Camera2D" type="Camera2D" parent="."]
 drag_vertical_enabled = true
 drag_top_margin = 0.3
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]

@@ -19,6 +19,14 @@ public partial class CharacterScript : CharacterBody2D
 	private float air_time = 0.0f;
 	private float ct_thresh = 0.067f;
 	
+	private void _on_input_event(Node viewport, InputEvent @event, long shape_idx)
+{
+	Hide(); // Player disappears after being hit.
+	EmitSignal(SignalName.Hit);
+	// Must be deferred as we can't change physics properties on a physics callback.
+	GetNode<CollisionShape2D>("CollisionShape2D").SetDeferred(CollisionShape2D.PropertyName.Disabled, true);
+}
+	
 	public override void _Ready()
 	{
 		
@@ -87,8 +95,18 @@ public partial class CharacterScript : CharacterBody2D
 			_rightSprite.FlipH = velX < 0;
 		}
 	}	
+	
+	public void Start(Vector2 position)
+{
+	Position = position;
+	Show();
+	GetNode<CollisionShape2D>("CollisionShape2D").Disabled = false;
+}
 	/*private void _on_coyote_time_timeout()
 	{
 		canJump = false;
 	}*/
 }
+
+
+
