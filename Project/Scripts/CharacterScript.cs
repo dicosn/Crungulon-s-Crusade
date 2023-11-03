@@ -11,17 +11,24 @@ public partial class CharacterScript : CharacterBody2D
 	public int wspeed { get; set; } = 1000;
 	public int accel = 50;
 	
-	//stats for displau
-	public int velocityY = 0;
-	public int velocityX = 0;
+	//stats for display
+	public float velocityY = 0.0f;
+	public float velocityX = 0.0f;
 	
-	private Sprite2D _idleSprite;
-	private Sprite2D _rightSprite;
 	private Sprite2D _leftSprite;
 	private Sprite2D _jumpSprite;
+	private Sprite2D _idleSprite;
+	private Sprite2D _rightSprite;
+	
+	//coyote time vars
 	private float air_time = 0.0f;
 	private float ct_thresh = 0.067f;
+	private bool stopped_jumping = false;
 	
+	//jump time vars
+	public float jump_time = 0.0f;
+	public float jt_thresh = 0.5f;
+		
 	public override void _Ready()
 	{
 		//gravity = 5*jumpvelocity;
@@ -37,24 +44,45 @@ public partial class CharacterScript : CharacterBody2D
 	{
 		var velocity = Velocity;
 		
-		//air behavior
-		if (!IsOnFloor()){ 
-			//time spent airborn
-			air_time += (float)delta;
-			//jump while airtime below the coyote time threshhold
-			if(Input.IsKeyPressed(Key.Space) && air_time <= ct_thresh){
-				velocity.Y = -jumpvelocity; 
-			}
-			else{//fall normal style
-				velocity.Y += (float)delta * gravity; 
+		//if jump button pressed
+		if(Input.IsKeyPressed(Key.Space)){
+			//and on the floor
+			if(IsOnFloor() || air_time < ct_thresh){
+				//then you can jump
+				velocity.Y = -jumpvelocity;
+				air_time = ct_thresh;
+				stopped_jumping = false;
 			}
 		}
-		else{//dont fall, but jump when necessary
+		//if holding down jump
+		if(Input.IsKeyPressed(Key.Space) && !stopped_jumping){
+			//and threshold not reached
+			if(jump_time < jt_thresh){
+				//keep jumping
+				velocity.Y = -jumpvelocity;
+				jump_time += (float)delta;
+			}
+		}
+		
+		if(!Input.IsKeyPressed(Key.Space)){
+			jump_time = jt_thresh;
+			stopped_jumping = true;
+		}
+		
+		if(IsOnFloor()){
 			air_time = 0;
+			jump_time = 0;
+			//can_jump = true;
 			if(Input.IsKeyPressed(Key.Space)){
 				velocity.Y = -jumpvelocity; 
 			}
-		}		
+		}
+		else{
+			velocity.Y += (float)delta*gravity;
+			if(air_time < ct_thresh){
+				air_time += (float)delta;
+			}
+		}
 		
 		//horizontal motion
 		if (Input.IsActionPressed("move_right")){ 
