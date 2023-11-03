@@ -6,14 +6,20 @@ public partial class CharacterScript : CharacterBody2D
 	[Signal]
 	public delegate void HitEventHandler();
 	
+	
 	public int jumpvelocity { get; set; } = 700;
 	public int gravity = 3500;   //ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
 	public int wspeed { get; set; } = 1000;
 	public int accel = 50;
 	
-	//stats for displau
-	public int velocityY = 0;
-	public int velocityX = 0;
+	[Export]
+	public float velocityY = 0.0f;
+	[Export]
+	public float velocityX = 0.0f;
+	
+	
+	
+	
 	
 	private Sprite2D _idleSprite;
 	private Sprite2D _rightSprite;
@@ -78,6 +84,7 @@ public partial class CharacterScript : CharacterBody2D
 		velocityX = velocity.X;
 		MoveAndSlide();
 	}
+	
 	private void _UpdateSpriteRenderer(float velX, float velY) {
 		bool walking = velX != 0;
 		bool jumping = velY < 0;

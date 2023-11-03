@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://cirdy2tvrl1ng"]
 
 [ext_resource type="Script" path="res://Scripts/Main_Test.cs" id="1_3cprv"]
-[ext_resource type="TileSet" uid="uid://cr8v7t8tse0ng" path="res://new_tile_set.tres" id="1_ffq8e"]
+[ext_resource type="TileSet" uid="uid://djsrcvgw8iqnd" path="res://new_tile_set.tres" id="1_ffq8e"]
 [ext_resource type="PackedScene" uid="uid://bj8wa1vw6x6ha" path="res://Scenes/Character.tscn" id="3_b8g3r"]
 [ext_resource type="Script" path="res://Scripts/Label2.gd" id="3_noddq"]
 [ext_resource type="Script" path="res://Scenes/ProgressBar.cs" id="4_lwvso"]
