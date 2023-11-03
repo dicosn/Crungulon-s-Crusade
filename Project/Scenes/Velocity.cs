@@ -5,10 +5,11 @@ public partial class Velocity : Label
 
 	public override void _Process(double delta)
 	{
-		var main = GetTree();
-		var node = main.GetNode("Node2D");
-		var tracker = node.GetChild();
-		var velocityx = tracker.velocityX;
+		var main = GetParent();
+		var canv = main.GetParent();
+		var node = canv.GetNode("Node2D/CharacterBody2D");
+		
+		var velocityx = (CharacterScript) node.velocityX;
 		GD.Print("velocityx");
 	}
 }
