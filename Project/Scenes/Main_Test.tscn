@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cirdy2tvrl1ng"]
+[gd_scene load_steps=10 format=3 uid="uid://cirdy2tvrl1ng"]
 
 [ext_resource type="Script" path="res://Scripts/Main_Test.cs" id="1_3cprv"]
 [ext_resource type="TileSet" uid="uid://djsrcvgw8iqnd" path="res://new_tile_set.tres" id="1_ffq8e"]
@@ -6,7 +6,6 @@
 [ext_resource type="Script" path="res://Scripts/Label2.gd" id="3_noddq"]
 [ext_resource type="Script" path="res://Scenes/ProgressBar.cs" id="4_lwvso"]
 [ext_resource type="Script" path="res://Scenes/Label2.gd" id="4_u8hk7"]
-[ext_resource type="Script" path="res://Scenes/Velocity.cs" id="6_623b6"]
 
 [sub_resource type="FontVariation" id="FontVariation_o7c1s"]
 variation_embolden = 0.79
@@ -45,7 +44,7 @@ offset_left = 10.0
 offset_top = 10.0
 offset_right = 610.0
 offset_bottom = 96.0
-text = "Crungulon's Crucade"
+text = "Crungulon's Crusade"
 label_settings = SubResource("LabelSettings_g86og")
 
 [node name="Label" type="Label" parent="CanvasLayer"]
@@ -78,7 +77,6 @@ offset_top = 264.0
 offset_right = 114.0
 offset_bottom = 316.0
 text = "Velocity"
-script = ExtResource("6_623b6")
 
 [node name="GroundTileMap" type="TileMap" parent="."]
 scale = Vector2(4, 4)

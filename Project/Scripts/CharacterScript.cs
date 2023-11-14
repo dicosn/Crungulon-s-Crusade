@@ -12,21 +12,14 @@ public partial class CharacterScript : CharacterBody2D
 	public int wspeed { get; set; } = 1000;
 	public int accel = 50;
 	
-	[Export]
-	public float velocityY = 0.0f;
-	[Export]
-	public float velocityX = 0.0f;
-	
-	
-	
-	
-	
 	private Sprite2D _idleSprite;
 	private Sprite2D _rightSprite;
 	private Sprite2D _leftSprite;
 	private Sprite2D _jumpSprite;
 	private float air_time = 0.0f;
 	private float ct_thresh = 0.067f;
+	private Label Velocityl;
+	
 	
 	public override void _Ready()
 	{
@@ -36,6 +29,12 @@ public partial class CharacterScript : CharacterBody2D
 		_rightSprite = GetNode<Sprite2D>("RightSprite");
 		//_leftSprite = GetNode<Sprite2D>("LeftSprite");
 		_jumpSprite = GetNode<Sprite2D>("JumpSprite");
+		Node Node2nddim = GetParent();
+		Node Mainte = Node2nddim.GetParent();
+		Node Canvasla = Mainte.GetChild(1);
+		Velocityl = Canvasla.GetChild(4) as Label;
+		
+		//Velocityl = GetParent().GetParent().GetChild(1).GetChild(4);
 		
 	}
 	
@@ -80,8 +79,8 @@ public partial class CharacterScript : CharacterBody2D
 		//_UpdateSpriteRendererY(velocity.Y);
 		
 		Velocity = velocity;
-		velocityY = velocity.Y;
-		velocityX = velocity.X;
+		
+		Velocityl.Text = $"Velocity X: {velocity.X}, Velocity Y: {velocity.Y}";
 		MoveAndSlide();
 	}
 	
