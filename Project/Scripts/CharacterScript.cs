@@ -6,30 +6,32 @@ public partial class CharacterScript : CharacterBody2D
 	[Signal]
 	public delegate void HitEventHandler();
 	
-	public int gravity = 3000;   //ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
-	public int wspeed { get; set; } = 850;
-	public int jumpvelocity { get; set; } = 1300;
+	public int jumpvelocity { get; set; } = 700;
+	public int gravity = 3500;   //ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
+	public int wspeed { get; set; } = 1000;
 	public int accel = 50;
 	
+	//stats for display
+	public float velocityY = 0.0f;
+	public float velocityX = 0.0f;
 	
-	private Sprite2D _idleSprite;
-	private Sprite2D _rightSprite;
 	private Sprite2D _leftSprite;
 	private Sprite2D _jumpSprite;
+	private Sprite2D _idleSprite;
+	private Sprite2D _rightSprite;
+	
+	//coyote time vars
 	private float air_time = 0.0f;
 	private float ct_thresh = 0.067f;
+	private bool stopped_jumping = false;
 	
-	private void _on_input_event(Node viewport, InputEvent @event, long shape_idx)
-{
-	Hide(); // Player disappears after being hit.
-	EmitSignal(SignalName.Hit);
-	// Must be deferred as we can't change physics properties on a physics callback.
-	GetNode<CollisionShape2D>("CollisionShape2D").SetDeferred(CollisionShape2D.PropertyName.Disabled, true);
-}
-	
+	//jump time vars
+	public float jump_time = 0.0f;
+	public float jt_thresh = 0.5f;
+		
 	public override void _Ready()
 	{
-		
+		//gravity = 5*jumpvelocity;
 		// get sprite references
 		_idleSprite = GetNode<Sprite2D>("IdleSprite");
 		_rightSprite = GetNode<Sprite2D>("RightSprite");
@@ -42,24 +44,45 @@ public partial class CharacterScript : CharacterBody2D
 	{
 		var velocity = Velocity;
 		
-		//air behavior
-		if (!IsOnFloor()){ 
-			//time spent airborn
-			air_time += (float)delta;
-			//jump while airtime below the coyote time threshhold
-			if(Input.IsKeyPressed(Key.Space) && air_time <= ct_thresh){
-				velocity.Y = -jumpvelocity; 
-			}
-			else{//fall normal style
-				velocity.Y += (float)delta * gravity; 
+		//if jump button pressed
+		if(Input.IsKeyPressed(Key.Space)){
+			//and on the floor
+			if(IsOnFloor() || air_time < ct_thresh){
+				//then you can jump
+				velocity.Y = -jumpvelocity;
+				air_time = ct_thresh;
+				stopped_jumping = false;
 			}
 		}
-		else{//dont fall, but jump when necessary
+		//if holding down jump
+		if(Input.IsKeyPressed(Key.Space) && !stopped_jumping){
+			//and threshold not reached
+			if(jump_time < jt_thresh){
+				//keep jumping
+				velocity.Y = -jumpvelocity;
+				jump_time += (float)delta;
+			}
+		}
+		
+		if(!Input.IsKeyPressed(Key.Space)){
+			jump_time = jt_thresh;
+			stopped_jumping = true;
+		}
+		
+		if(IsOnFloor()){
 			air_time = 0;
+			jump_time = 0;
+			//can_jump = true;
 			if(Input.IsKeyPressed(Key.Space)){
 				velocity.Y = -jumpvelocity; 
 			}
-		}		
+		}
+		else{
+			velocity.Y += (float)delta*gravity;
+			if(air_time < ct_thresh){
+				air_time += (float)delta;
+			}
+		}
 		
 		//horizontal motion
 		if (Input.IsActionPressed("move_right")){ 
@@ -79,6 +102,8 @@ public partial class CharacterScript : CharacterBody2D
 		//_UpdateSpriteRendererY(velocity.Y);
 		
 		Velocity = velocity;
+		velocityY = velocity.Y;
+		velocityX = velocity.X;
 		MoveAndSlide();
 	}
 	private void _UpdateSpriteRenderer(float velX, float velY) {
@@ -95,18 +120,8 @@ public partial class CharacterScript : CharacterBody2D
 			_rightSprite.FlipH = velX < 0;
 		}
 	}	
-	
-	public void Start(Vector2 position)
-{
-	Position = position;
-	Show();
-	GetNode<CollisionShape2D>("CollisionShape2D").Disabled = false;
-}
 	/*private void _on_coyote_time_timeout()
 	{
 		canJump = false;
 	}*/
 }
-
-
-

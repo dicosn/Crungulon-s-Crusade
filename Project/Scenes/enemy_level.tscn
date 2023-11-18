@@ -6,8 +6,10 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ukc5p"]
 
 [node name="Mob" type="RigidBody2D" groups=["mobs"]]
-gravity_scale = 0.0
+disable_mode = 1
+contact_monitor = true
 script = ExtResource("1_d840d")
+metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0.541176, 0, 0.643137, 1)
@@ -21,4 +23,6 @@ shape = SubResource("RectangleShape2D_ukc5p")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 
+[connection signal="input_event" from="." to="." method="_OnCollision"]
+[connection signal="ready" from="." to="." method="_OnReady"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
