@@ -5,10 +5,11 @@ public partial class CharacterScript : CharacterBody2D
 {
 	[Signal]
 	public delegate void HitEventHandler();
-	
-	public int jumpvelocity { get; set; } = 700;
-	public int gravity = 3500;   //ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
+	//was 1500
+	public int jumpvelocity { get; set; } = 1000;
+	public int gravity = 7500;   //ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
 	public int wspeed { get; set; } = 1000;
+	public int gcap = 1500;
 	public int accel = 50;
 	
 	//stats for display
@@ -27,31 +28,42 @@ public partial class CharacterScript : CharacterBody2D
 	
 	//jump time vars
 	public float jump_time = 0.0f;
-	public float jt_thresh = 0.5f;
-		
+	public float jt_thresh = 0.3f;
+
 	public override void _Ready()
 	{
 		//gravity = 5*jumpvelocity;
 		// get sprite references
+		//jumpvelocity = 1500;
+		//gravity = 5*jumpvelocity;
 		_idleSprite = GetNode<Sprite2D>("IdleSprite");
 		_rightSprite = GetNode<Sprite2D>("RightSprite");
 		//_leftSprite = GetNode<Sprite2D>("LeftSprite");
 		_jumpSprite = GetNode<Sprite2D>("JumpSprite");
-		
 	}
 	
 	public override void _PhysicsProcess(double delta)
 	{
 		var velocity = Velocity;
-		
+		//comment out below to restore height function
+		//stopped_jumping = true;
 		//if jump button pressed
 		if(Input.IsKeyPressed(Key.Space)){
 			//and on the floor
-			if(IsOnFloor() || air_time < ct_thresh){
+			if(IsOnFloor()){
 				//then you can jump
 				velocity.Y = -jumpvelocity;
-				air_time = ct_thresh;
+				//GD.Print("velocity.Y = ", velocity.Y);
 				stopped_jumping = false;
+			}
+			else if(air_time < ct_thresh && stopped_jumping){
+				velocity.Y = -jumpvelocity;
+				//GD.Print("coyote: velocity.Y = ", velocity.Y);
+				//NEXT time try removing this
+				air_time = ct_thresh;
+				jump_time = 0f;
+				stopped_jumping = false;
+				//GD.Print("coyote: bool = ", coy);
 			}
 		}
 		//if holding down jump
@@ -59,7 +71,7 @@ public partial class CharacterScript : CharacterBody2D
 			//and threshold not reached
 			if(jump_time < jt_thresh){
 				//keep jumping
-				velocity.Y = -jumpvelocity;
+				velocity.Y = -(float)jumpvelocity*1.25f;
 				jump_time += (float)delta;
 			}
 		}
@@ -70,18 +82,12 @@ public partial class CharacterScript : CharacterBody2D
 		}
 		
 		if(IsOnFloor()){
-			air_time = 0;
-			jump_time = 0;
-			//can_jump = true;
-			if(Input.IsKeyPressed(Key.Space)){
-				velocity.Y = -jumpvelocity; 
-			}
+			air_time = 0f;
+			jump_time = 0f;
 		}
 		else{
-			velocity.Y += (float)delta*gravity;
-			if(air_time < ct_thresh){
-				air_time += (float)delta;
-			}
+			velocity.Y += Math.Min(gcap,(float)delta*gravity);
+			air_time += (float)delta;
 		}
 		
 		//horizontal motion
@@ -99,7 +105,6 @@ public partial class CharacterScript : CharacterBody2D
 		}
 			
 		_UpdateSpriteRenderer(velocity.X,velocity.Y);
-		//_UpdateSpriteRendererY(velocity.Y);
 		
 		Velocity = velocity;
 		velocityY = velocity.Y;
