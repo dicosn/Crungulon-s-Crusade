@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://die51yvlj0lo0"]
+[gd_scene load_steps=7 format=3 uid="uid://die51yvlj0lo0"]
 
+[ext_resource type="Script" path="res://MainMenu.cs" id="1_8ptsi"]
 [ext_resource type="FontFile" uid="uid://cxi0vj52oapb2" path="res://ShadowsIntoLight-Regular.ttf" id="1_ykswa"]
 [ext_resource type="Texture2D" uid="uid://c4e1epb315tss" path="res://Assets/Ground Sprites/GroundBlock1small.png" id="2_3yvy8"]
 [ext_resource type="Texture2D" uid="uid://bgwx8g6j7638t" path="res://Assets/Character Sprites/l0_DefaultCharacter1.png" id="3_edf26"]
+[ext_resource type="Texture2D" uid="uid://0rqd4ak4q4yx" path="res://crungy.jpeg" id="5_lr0q6"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_nkcdn"]
 font = ExtResource("1_ykswa")
@@ -14,6 +16,7 @@ shadow_size = 20
 shadow_color = Color(0.0431373, 0, 0, 0)
 
 [node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_8ptsi")
 
 [node name="Crungulon Title" type="Label" parent="."]
 anchors_preset = 8
@@ -69,3 +72,10 @@ text = "Credits"
 
 [node name="Node2D" type="Node2D" parent="."]
 position = Vector2(2037, 1241)
+
+[node name="Crungy" type="Sprite2D" parent="."]
+position = Vector2(528, 1051)
+scale = Vector2(0.618615, 0.703042)
+texture = ExtResource("5_lr0q6")
+
+[connection signal="pressed" from="Start" to="." method="OnStartPressed"]
