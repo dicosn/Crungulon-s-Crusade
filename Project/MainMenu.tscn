@@ -1,5 +1,71 @@
-[gd_scene format=3 uid="uid://die51yvlj0lo0"]
+[gd_scene load_steps=5 format=3 uid="uid://die51yvlj0lo0"]
 
-[node name="MarginContainer" type="MarginContainer"]
-offset_right = 40.0
-offset_bottom = 40.0
+[ext_resource type="FontFile" uid="uid://cxi0vj52oapb2" path="res://ShadowsIntoLight-Regular.ttf" id="1_ykswa"]
+[ext_resource type="Texture2D" uid="uid://c4e1epb315tss" path="res://Assets/Ground Sprites/GroundBlock1small.png" id="2_3yvy8"]
+[ext_resource type="Texture2D" uid="uid://bgwx8g6j7638t" path="res://Assets/Character Sprites/l0_DefaultCharacter1.png" id="3_edf26"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_nkcdn"]
+font = ExtResource("1_ykswa")
+font_size = 64
+font_color = Color(1, 0.431373, 1, 1)
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 20
+shadow_color = Color(0.0431373, 0, 0, 0)
+
+[node name="HUD" type="CanvasLayer"]
+
+[node name="Crungulon Title" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -235.0
+offset_top = -53.5
+offset_right = 235.0
+offset_bottom = 53.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Crungulon's Crusade!"
+label_settings = SubResource("LabelSettings_nkcdn")
+
+[node name="Start" type="Button" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -90.0
+offset_top = -547.0
+offset_right = 98.0
+offset_bottom = -430.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Start!"
+icon = ExtResource("2_3yvy8")
+
+[node name="Quit" type="Button" parent="."]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.868
+anchor_right = 0.5
+anchor_bottom = 0.868
+offset_left = -30.0
+offset_top = -16.4
+offset_right = 46.0
+offset_bottom = 39.6
+grow_horizontal = 2
+grow_vertical = 0
+text = "Quit"
+icon = ExtResource("3_edf26")
+
+[node name="Creds" type="Button" parent="."]
+offset_left = 175.0
+offset_top = 236.0
+offset_right = 302.0
+offset_bottom = 267.0
+text = "Credits"
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(2037, 1241)
