@@ -5,7 +5,6 @@
 [ext_resource type="Texture2D" uid="uid://de7sdsfl3ghup" path="res://Assets/Ground Sprites/l00_default sprite tilemap1.png" id="3_lit1h"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_nmt4x"]
-bounce = 0.34
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kvoq0"]
 texture = ExtResource("1_tdonp")
