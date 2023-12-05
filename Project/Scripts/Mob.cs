@@ -3,10 +3,6 @@ using System;
 
 public partial class Mob : RigidBody2D
 {
-	//[Export]
-	//public PackedScene Main_Test { get; set; }
-	//[Export]
-	//public float speed = 100.0f;
 	[Export]
 	Vector2 startingPosition = new Vector2();
 	[Export]
