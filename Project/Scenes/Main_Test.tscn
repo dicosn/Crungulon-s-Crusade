@@ -109,7 +109,7 @@ offset_left = 10.0
 offset_top = 100.0
 offset_right = 79.0
 offset_bottom = 158.0
-text = "100"
+text = "10"
 label_settings = ExtResource("5_w51xs")
 script = ExtResource("3_noddq")
 
