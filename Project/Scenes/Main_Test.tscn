@@ -89,3 +89,5 @@ layer_0/tile_data = PackedInt32Array(1638400, 12, 0, 1638401, 12, 0, 1638402, 12
 position = Vector2(500, 1200)
 
 [node name="HUD" parent="." instance=ExtResource("7_o5qo6")]
+
+[connection signal="start_game" from="HUD" to="." method="NewGame"]

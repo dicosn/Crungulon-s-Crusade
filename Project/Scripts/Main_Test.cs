@@ -16,5 +16,9 @@ public partial class Main_Test : Node
 
 		//GetNode<Timer>("StartTimer").Start();
 }
+//	public void QuitGame() {
+//		Get_Tree().Quit();
+//	}
 	
 }
+
