@@ -1,0 +1,72 @@
+[gd_scene load_steps=5 format=3 uid="uid://bl2icwikd50rx"]
+
+[ext_resource type="Script" path="res://Scripts/MainMenu.gd" id="1_p3din"]
+[ext_resource type="Texture2D" uid="uid://de7sdsfl3ghup" path="res://Assets/Ground Sprites/l00_default sprite tilemap1.png" id="2_qnw50"]
+
+[sub_resource type="FontVariation" id="FontVariation_o7c1s"]
+variation_embolden = 0.79
+opentype_features = {
+1936928817: 1
+}
+spacing_glyph = -2
+spacing_space = 15
+
+[sub_resource type="LabelSettings" id="LabelSettings_uotjk"]
+font = SubResource("FontVariation_o7c1s")
+font_size = 60
+font_color = Color(0.823529, 0.721569, 0.92549, 1)
+outline_size = 40
+outline_color = Color(0.568627, 0.14902, 0, 1)
+shadow_size = 60
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(10, 10)
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_p3din")
+
+[node name="TitleLabel" type="Label" parent="."]
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 610.0
+offset_bottom = 96.0
+text = "Crungulon's Crusade"
+label_settings = SubResource("LabelSettings_uotjk")
+
+[node name="Start Button" type="Button" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -50.0
+offset_right = 200.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Start"
+
+[node name="Quit Button" type="Button" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -400.0
+offset_bottom = 100.0
+grow_horizontal = 0
+text = "Quit"
+
+[node name="Credit Button" type="Button" parent="."]
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="Crungulon Sprite2D" type="Sprite2D" parent="."]
+
+[node name="GrayBoxSprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.956863, 0.776471, 0.858824, 1)
+z_index = -1
+position = Vector2(1310.5, 864.5)
+scale = Vector2(94.8438, 67.9687)
+texture = ExtResource("2_qnw50")
+
+[connection signal="pressed" from="Start Button" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="Quit Button" to="." method="_on_quit_button_pressed"]
