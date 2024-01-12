@@ -74,7 +74,6 @@ point_count = 2
 
 [node name="Main_Test" type="Node"]
 script = ExtResource("1_3cprv")
-enemy_level = ExtResource("2_gr7k8")
 Character = ExtResource("3_b8g3r")
 
 [node name="CharacterNode2D" type="Node2D" parent="."]
@@ -82,13 +81,8 @@ Character = ExtResource("3_b8g3r")
 [node name="CharacterBody2D" parent="CharacterNode2D" node_paths=PackedStringArray("Velocityl") instance=ExtResource("3_b8g3r")]
 Velocityl = NodePath("../../CanvasLayer/VelocityLabel")
 
-[node name="Mob" parent="." node_paths=PackedStringArray("a", "b", "mob") instance=ExtResource("2_gr7k8")]
+[node name="Mob" parent="." instance=ExtResource("2_gr7k8")]
 position = Vector2(-2529, 80)
-startingPosition = Vector2(550, 1550)
-endingPosition = Vector2(1000, 1550)
-a = NodePath("../a")
-b = NodePath("../b")
-mob = NodePath(".")
 
 [node name="Enemy" parent="." instance=ExtResource("4_jrv0b")]
 position = Vector2(743, 958)
