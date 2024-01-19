@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://bl2icwikd50rx"]
 
 [ext_resource type="Script" path="res://Scripts/MainMenu.gd" id="1_p3din"]
-[ext_resource type="Theme" path="res://Assets/Fonts/hud.tres" id="2_h5aat"]
+[ext_resource type="Theme" uid="uid://cjs5xhbd8dfnf" path="res://Assets/new_theme.tres" id="2_hwvqf"]
 [ext_resource type="Texture2D" uid="uid://de7sdsfl3ghup" path="res://Assets/Ground Sprites/l00_default sprite tilemap1.png" id="2_qnw50"]
 [ext_resource type="Texture2D" uid="uid://ddqf8wc80oapl" path="res://Assets/Art/sketch2.jpg" id="3_fc3p2"]
 
@@ -56,7 +56,7 @@ offset_right = 200.0
 offset_bottom = 50.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("2_h5aat")
+theme = ExtResource("2_hwvqf")
 text = "START"
 icon_alignment = 1
 
@@ -72,7 +72,7 @@ anchor_right = 1.0
 offset_left = -400.0
 offset_bottom = 100.0
 grow_horizontal = 0
-theme = ExtResource("2_h5aat")
+theme = ExtResource("2_hwvqf")
 text = "QUIT GAME"
 
 [node name="Credit Button" type="Button" parent="."]
