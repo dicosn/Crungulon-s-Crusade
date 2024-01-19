@@ -43,6 +43,11 @@ public partial class CharacterScript : CharacterBody2D
 	
 	public override void _PhysicsProcess(double delta){
 		var velocity = Velocity;
+		if(Input.IsKeyPressed(Key.Escape)){
+			GetTree().Quit();
+			GD.Print("escape");
+		}
+		
 		//if jump button pressed
 		if(Input.IsKeyPressed(Key.Space)){
 			//and on the floor

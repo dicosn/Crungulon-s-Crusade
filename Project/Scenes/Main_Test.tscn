@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cirdy2tvrl1ng"]
+[gd_scene load_steps=17 format=3 uid="uid://cirdy2tvrl1ng"]
 
 [ext_resource type="Script" path="res://Scripts/Main_Test.cs" id="1_3cprv"]
 [ext_resource type="TileSet" uid="uid://djsrcvgw8iqnd" path="res://new_tile_set.tres" id="1_ffq8e"]
@@ -7,7 +7,6 @@
 [ext_resource type="Script" path="res://Scripts/Label2.gd" id="3_noddq"]
 [ext_resource type="PackedScene" uid="uid://dnn4qvd5a1v8l" path="res://Scenes/Enemy.tscn" id="4_jrv0b"]
 [ext_resource type="LabelSettings" uid="uid://dxfnaualhfnqi" path="res://Main_Test.tres" id="5_w51xs"]
-[ext_resource type="PackedScene" uid="uid://bl2icwikd50rx" path="res://Scenes/hud.tscn" id="6_sqgt2"]
 [ext_resource type="Script" path="res://Scripts/PositionLabel.gd" id="7_a8n88"]
 [ext_resource type="Texture2D" uid="uid://c4e1epb315tss" path="res://Assets/Ground Sprites/GroundBlock1small.png" id="7_tjj6o"]
 [ext_resource type="Texture2D" uid="uid://de7sdsfl3ghup" path="res://Assets/Ground Sprites/l00_default sprite tilemap1.png" id="8_l4uqj"]
@@ -66,12 +65,6 @@ physics_layer_0/physics_material = SubResource("PhysicsMaterial_jifdx")
 sources/0 = SubResource("TileSetAtlasSource_dy5gx")
 sources/1 = SubResource("TileSetAtlasSource_a1j45")
 
-[sub_resource type="Curve2D" id="Curve2D_bjxn4"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, -560, 1550, 0, 0, 0, 0, 1000, 1550)
-}
-point_count = 2
-
 [node name="Main_Test" type="Node"]
 script = ExtResource("1_3cprv")
 Character = ExtResource("3_b8g3r")
@@ -81,8 +74,12 @@ Character = ExtResource("3_b8g3r")
 [node name="CharacterBody2D" parent="CharacterNode2D" node_paths=PackedStringArray("Velocityl") instance=ExtResource("3_b8g3r")]
 Velocityl = NodePath("../../CanvasLayer/VelocityLabel")
 
-[node name="Mob" parent="." instance=ExtResource("2_gr7k8")]
+[node name="Mob" parent="." node_paths=PackedStringArray("mob") instance=ExtResource("2_gr7k8")]
+visible = false
 position = Vector2(-2529, 80)
+startingPosition = Vector2(550, 1550)
+endingPosition = Vector2(1000, 1550)
+mob = NodePath(".")
 
 [node name="Enemy" parent="." instance=ExtResource("4_jrv0b")]
 position = Vector2(743, 958)
@@ -124,8 +121,6 @@ text = "100"
 label_settings = ExtResource("5_w51xs")
 script = ExtResource("7_a8n88")
 
-[node name="HUD" parent="." instance=ExtResource("6_sqgt2")]
-
 [node name="GroundTileMap" type="TileMap" parent="."]
 scale = Vector2(4, 4)
 tile_set = ExtResource("1_ffq8e")
@@ -150,16 +145,6 @@ layer_0/tile_data = PackedInt32Array(1638400, 65551, 0, 1638401, 65551, 0, 16384
 [node name="PlayerStartPosition" type="Marker2D" parent="."]
 position = Vector2(1653, 475)
 
-[node name="MobPath" type="Path2D" parent="."]
-curve = SubResource("Curve2D_bjxn4")
-
-[node name="MobSpawnLocation" type="PathFollow2D" parent="MobPath"]
-position = Vector2(-560, 1550)
-
-[node name="MobEndLocation" type="PathFollow2D" parent="MobPath"]
-position = Vector2(1000, 1550)
-progress = 1560.0
-
 [node name="MobTimer" type="Timer" parent="."]
 one_shot = true
 autostart = true
@@ -168,14 +153,7 @@ autostart = true
 wait_time = 2.0
 one_shot = true
 
-[node name="a" type="Marker2D" parent="."]
-position = Vector2(-550, 1550)
-
-[node name="b" type="Marker2D" parent="."]
-position = Vector2(1000, 1550)
-
 [connection signal="Hit" from="CharacterNode2D/CharacterBody2D" to="." method="gameOver"]
-[connection signal="start_game" from="HUD" to="." method="NewGame"]
 [connection signal="ready" from="MobTimer" to="." method="_Ready"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
 [connection signal="ready" from="StartTimer" to="." method="_on_start_timer_ready"]
