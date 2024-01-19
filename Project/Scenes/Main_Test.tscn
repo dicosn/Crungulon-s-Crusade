@@ -67,7 +67,6 @@ sources/1 = SubResource("TileSetAtlasSource_a1j45")
 
 [node name="Main_Test" type="Node"]
 script = ExtResource("1_3cprv")
-enemy_level = ExtResource("2_gr7k8")
 Character = ExtResource("3_b8g3r")
 
 [node name="CharacterNode2D" type="Node2D" parent="."]
