@@ -53,5 +53,16 @@ private float CD_thresh = 0.016f;
 		
 	public void OnVisibleOnScreenNotifier2DScreenExited(){
 		QueueFree();
-	}	
+	}
+//	private void _on_Area2D_body_entered(object body){
+//		GD.Print("Body: " + body + " has entered");
+//		if(body is KinematicBody2D){
+//			if(body is CharacterScript){
+//				CharacterScript cs = body as CharacterScript;
+//				cs.TakeDamage();
+//			}
+//		}
+//	}	
 }
+
+

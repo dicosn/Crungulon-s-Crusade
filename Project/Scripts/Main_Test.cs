@@ -16,6 +16,8 @@ public partial class Main_Test : Node
 		
 		GetNode<Timer>("StartTimer").Start();
 		GetNode<Timer>("MobTimer").Start();
+		
+
 	}
 	// These three functions are not used at the time but are placeholders for later		
 	public void _on_mob_timer_timeout() {}
