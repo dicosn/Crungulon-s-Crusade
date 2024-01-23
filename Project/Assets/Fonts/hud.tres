@@ -1,7 +1,0 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://bjnch2fvi0aer"]
-
-[ext_resource type="FontVariation" uid="uid://o6odnp8i3rc2" path="res://Assets/Fonts/new_font_variation.tres" id="1_ir2un"]
-
-[resource]
-default_font = ExtResource("1_ir2un")
-default_font_size = 46
