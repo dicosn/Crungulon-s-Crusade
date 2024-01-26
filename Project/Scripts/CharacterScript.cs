@@ -9,6 +9,8 @@ public partial class CharacterScript : CharacterBody2D
 	public Label Velocityl;
 	[Export]
 	public Label Health;
+//	[Export]
+//	public PackedScene Main_Test { get;set; }
 	
 	public int jumpvelocity { get; set; } = 1000;	//was 1500
 	public int gravity = 7500;   //ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
@@ -25,7 +27,7 @@ public partial class CharacterScript : CharacterBody2D
 	private Sprite2D _idleSprite;
 	private Sprite2D _rightSprite;
 	
-	private float health = 5;
+	private float health = 2;
 	
 	//coyote time vars
 	private float air_time = 0.0f;
@@ -146,13 +148,17 @@ public partial class CharacterScript : CharacterBody2D
 //	}
 
 	public void OnHit(){
-		//var gameover = GameOver();
+		//var gameover = Main_Test;
+		//var gameover = GetNode<Node2D>("Main_Test");
 		GD.Print("Got hit by enemy. Health is now at " + health);
 		health -= 1;
 		if (health <= 0){
 			//CharacterBody2D.Call("GameOver");
-			EmitSignal(SignalName.GameOver);
-			//gameover.GetCollider().Call("GameOver");
+			GD.Print("A");
+			EmitSignal("GameOver");
+			GD.Print("B");
+			Call("GameOver");
+			GD.Print("C");
 		}
 	}
 

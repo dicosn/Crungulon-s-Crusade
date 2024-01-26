@@ -32,6 +32,9 @@ public partial class Main_Test : Node
 		//GetNode<Timer>("MobTimer").Stop();
 		//GetTree().CallGroup("mobs", Node.MethodName.QueueFree);
 	}
+
 }
+
+
 
 
