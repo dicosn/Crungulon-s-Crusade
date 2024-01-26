@@ -3,6 +3,8 @@ using System;
 
 public partial class Main_Test : Node
 {
+	[Signal]
+	public delegate void GameEventHandler();
 	[Export]
 	public PackedScene enemy_level { get; set; }
 	[Export]
@@ -25,9 +27,11 @@ public partial class Main_Test : Node
 		GetNode<Timer>("MobTimer").Start();
 		GetNode<Timer>("ScoreTimer").Start();	
 	}
-	public void gameOver() {
+	public void GameOver() {
+		GD.Print("Game Over!");
 		//GetNode<Timer>("MobTimer").Stop();
 		//GetTree().CallGroup("mobs", Node.MethodName.QueueFree);
 	}
 }
+
 

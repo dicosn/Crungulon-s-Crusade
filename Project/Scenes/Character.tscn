@@ -35,4 +35,5 @@ one_shot = true
 drag_vertical_enabled = true
 drag_top_margin = 0.3
 
-[connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="Hit" from="." to="." method="OnHit"]
+[connection signal="input_event" from="." to="." method="OnInputEvent"]

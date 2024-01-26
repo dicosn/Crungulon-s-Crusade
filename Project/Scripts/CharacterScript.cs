@@ -7,6 +7,8 @@ public partial class CharacterScript : CharacterBody2D
 	public delegate void HitEventHandler();
 	[Export]
 	public Label Velocityl;
+	[Export]
+	public Label Health;
 	
 	public int jumpvelocity { get; set; } = 1000;	//was 1500
 	public int gravity = 7500;   //ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
@@ -23,6 +25,8 @@ public partial class CharacterScript : CharacterBody2D
 	private Sprite2D _idleSprite;
 	private Sprite2D _rightSprite;
 	
+	private float health = 5;
+	
 	//coyote time vars
 	private float air_time = 0.0f;
 	private float ct_thresh = 0.067f;
@@ -32,15 +36,21 @@ public partial class CharacterScript : CharacterBody2D
 	public float jump_time = 0.0f;
 	public float jt_thresh = 0.3f;
 	
-	//private Label Velocityl;
-	
+//	public float Health	{
+//		get	{	
+//			return health;	
+//		}
+//		set	{
+//			health = value;
+//			if (health <= 0){
+//				QueueFree();}
+//		}
+//	}
 	public override void _Ready(){
 		_idleSprite = GetNode<Sprite2D>("IdleSprite");
 		_rightSprite = GetNode<Sprite2D>("RightSprite");
 		_jumpSprite = GetNode<Sprite2D>("JumpSprite");
-		
 	}
-	
 	public override void _PhysicsProcess(double delta){
 		var velocity = Velocity;
 		if(Input.IsKeyPressed(Key.Escape)){
@@ -122,5 +132,31 @@ public partial class CharacterScript : CharacterBody2D
 			//_rightSprite.Play(); //This is for when we want to make a walk cycle animation
 			_rightSprite.FlipH = velX < 0;
 		}
-	}	
+	}
+//	private void OnInputEvent(CharacterBody2D body){
+//		Hide(); // Player disappears after being hit.
+//		EmitSignal(SignalName.Hit);
+//		// Must be deferred as we can't change physics properties on a physics callback.
+//		GetNode<CollisionShape2D>("CollisionShape2D").SetDeferred(CollisionShape2D.PropertyName.Disabled, true);
+//	}
+//	public void Start(Vector2 position){
+//		Position = position;
+//		Show();
+//		GetNode<CollisionShape2D>("CollisionShape2D").Disabled = false;
+//	}
+
+	public void OnHit(){
+		//var gameover = GameOver();
+		GD.Print("Got hit by enemy. Health is now at " + health);
+		health -= 1;
+		if (health <= 0){
+			//CharacterBody2D.Call("GameOver");
+			EmitSignal(SignalName.GameOver);
+			//gameover.GetCollider().Call("GameOver");
+		}
+	}
+
 }
+
+
+

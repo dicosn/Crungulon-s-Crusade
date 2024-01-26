@@ -3,16 +3,25 @@ using System;
 
 public partial class Enemy : CharacterBody2D
 {
+[Signal]
+public delegate void EnemyCollideEventHandler();
+
 public int speed = 200;
 public int gravity = 3500;
 private Sprite2D _Sprite;
+
+private Timer timer;
+
+[Export]
+public PackedScene Character { get;set; }
+//public CharacterBody2D player { get; set; }
 
 //cool down time for reversal of direction
 private float move_time = 0.0f;
 private float CD_thresh = 0.016f;
 	
 	public override void _Ready(){
-		_Sprite = GetNode<Sprite2D>("Sprite2D");
+		_Sprite = GetNode<Sprite2D>("Sprite2D");	
 	}	
 	
 	public void Start(Vector2 position, float direction){
@@ -24,6 +33,7 @@ private float CD_thresh = 0.016f;
 	public override void _PhysicsProcess(double delta){
  		Vector2 velocity = Velocity;
 		_Sprite.FlipH = velocity.X < 0;
+		var player = GetNode<CharacterBody2D>("Character/CharacterBody2D");
 		var collision = MoveAndCollide(velocity * (float)delta);	
 			
 			if (IsOnWall())	{
@@ -38,19 +48,41 @@ private float CD_thresh = 0.016f;
 				}
 			}	
 			move_time += (float)delta;
-		//Unused but kept for later reference //
-		//if (collision != null){
-			//velocity = velocity.Bounce(collision.GetNormal());}
+		
+		if (collision != null){
+			//velocity = velocity.Bounce(collision.GetNormal());
 			//velocity = speed;
-			//if (collision.GetCollider().HasMethod("Hit")){
-				//collision.GetCollider().Call("Hit");}
+			if (collision.GetCollider().HasMethod("OnHit")){
+				collision.GetCollider().Call("OnHit");
+				//GD.Print(collision + "Hit Player");
+			}
+		}
 
 		velocity.Y += (float)delta*gravity;
 		velocity.X = speed;
 		Velocity = velocity;
 		MoveAndSlide();
 	}		
-		
+	
+//	private void OnCollision(CollisionShape2D with){
+//		if (with.GetParent() is CharacterBody2D player){
+//			timer.Start(1);
+//		}
+//	}
+//
+//	private void OnCollisionNoMore(CollisionShape2D with){
+//		if (with.GetParent() is CharacterBody2D player){
+//			timer.Stop();
+//		}
+//	}
+//
+//	private void OnTimerTimeout(){
+//		var player = GetNode<CharacterBody2D>("Character/CharacterBody2D");
+//		if (player != null){
+//			//player.Health -= 2;
+//			//GD.Print("Enemy hurt player");
+//		}
+//	}	
 	public void OnVisibleOnScreenNotifier2DScreenExited(){
 		QueueFree();
 	}
