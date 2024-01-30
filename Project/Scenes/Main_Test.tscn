@@ -4,7 +4,7 @@
 [ext_resource type="TileSet" uid="uid://djsrcvgw8iqnd" path="res://new_tile_set.tres" id="1_ffq8e"]
 [ext_resource type="PackedScene" uid="uid://bj8wa1vw6x6ha" path="res://Scenes/Character.tscn" id="3_b8g3r"]
 [ext_resource type="Script" path="res://Scripts/Label2.gd" id="3_noddq"]
-[ext_resource type="PackedScene" uid="uid://dnn4qvd5a1v8l" path="res://Scenes/Enemy.tscn" id="4_jrv0b"]
+[ext_resource type="PackedScene" uid="uid://r3j7wor5dmfc" path="res://Scenes/Enemy.tscn" id="4_jrv0b"]
 [ext_resource type="LabelSettings" uid="uid://dxfnaualhfnqi" path="res://Main_Test.tres" id="5_w51xs"]
 [ext_resource type="Script" path="res://Scripts/PositionLabel.gd" id="7_a8n88"]
 [ext_resource type="Texture2D" uid="uid://c4e1epb315tss" path="res://Assets/Ground Sprites/GroundBlock1small.png" id="7_tjj6o"]
@@ -72,6 +72,7 @@ script = ExtResource("1_3cprv")
 [node name="CharacterBody2D" parent="CharacterNode2D" node_paths=PackedStringArray("Velocityl", "Health") instance=ExtResource("3_b8g3r")]
 Velocityl = NodePath("../../CanvasLayer/VelocityLabel")
 Health = NodePath("../../CanvasLayer/HealthLabel")
+
 
 [node name="Enemy" parent="." instance=ExtResource("4_jrv0b")]
 position = Vector2(743, 958)
