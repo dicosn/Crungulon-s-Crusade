@@ -3,15 +3,18 @@ using System;
 
 public partial class Main_Test : Node
 {
-	[Export]
-	public PackedScene enemy_level { get; set; }
-	[Export]
-	public PackedScene Character { get; set; }
+	[Signal]
+	public delegate void GameEventHandler();
+	//[Export]
+	//public PackedScene enemy_level { get; set; }
+	//[Export]
+	//public PackedScene Character { get; set; }
 	
 	public override void _Ready()
 	{
 		GD.Print("Main_Test is ready!");
 	}
+
 
 	public void NewGame() {
 
@@ -30,9 +33,14 @@ public partial class Main_Test : Node
 		GetNode<Timer>("MobTimer").Start();
 		//GetNode<Timer>("ScoreTimer").Start();	
 	}
-	public void gameOver() {
+	public void GameOver() {
+		GD.Print("Game Over!");
 		//GetNode<Timer>("MobTimer").Stop();
 		//GetTree().CallGroup("mobs", Node.MethodName.QueueFree);
 	}
+
 }
+
+
+
 

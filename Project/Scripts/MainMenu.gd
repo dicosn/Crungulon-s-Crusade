@@ -18,7 +18,7 @@ signal Quit_Button
 
 
 func _on_start_button_pressed():
-	$"Start Button".hide()
+#	$"Start Button".hide()
 	start_game.emit()
 #	$"Credit Button".hide()
 #	$"Quit Button".hide()

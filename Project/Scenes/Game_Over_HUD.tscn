@@ -1,0 +1,87 @@
+[gd_scene load_steps=7 format=3 uid="uid://b5a7cx14utc5x"]
+
+[ext_resource type="Theme" uid="uid://bly3q8wp85gkd" path="res://Assets/new_theme.tres" id="1_8anwe"]
+[ext_resource type="Script" path="res://Scripts/Game_Over_HUD.cs" id="1_dvhri"]
+[ext_resource type="Texture2D" uid="uid://ddqf8wc80oapl" path="res://Assets/Art/sketch2.jpg" id="2_vwa5g"]
+[ext_resource type="Texture2D" uid="uid://de7sdsfl3ghup" path="res://Assets/Ground Sprites/l00_default sprite tilemap1.png" id="3_tvc3b"]
+
+[sub_resource type="FontVariation" id="FontVariation_o7c1s"]
+variation_embolden = 0.79
+opentype_features = {
+1936928817: 1
+}
+spacing_glyph = -2
+spacing_space = 15
+
+[sub_resource type="LabelSettings" id="LabelSettings_nltkw"]
+font = SubResource("FontVariation_o7c1s")
+font_size = 200
+font_color = Color(0.807843, 0.803922, 0.0156863, 1)
+outline_size = 80
+outline_color = Color(0.2, 0.317647, 0.517647, 1)
+shadow_size = 120
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(15, 20)
+
+[node name="GO HUD" type="CanvasLayer"]
+script = ExtResource("1_dvhri")
+
+[node name="Game Over Label" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1020.0
+offset_top = -500.0
+offset_right = 1020.0
+offset_bottom = -224.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 1
+text = "- - - - -"
+label_settings = SubResource("LabelSettings_nltkw")
+horizontal_alignment = 1
+uppercase = true
+
+[node name="Restart Button" type="Button" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -50.0
+offset_right = 200.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_8anwe")
+text = "RESTART"
+icon_alignment = 1
+
+[node name="Game Over Sprite2D" type="Sprite2D" parent="Restart Button"]
+position = Vector2(200, 550)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_vwa5g")
+
+[node name="Quit Button" type="Button" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -400.0
+offset_bottom = 100.0
+grow_horizontal = 0
+theme = ExtResource("1_8anwe")
+text = "QUIT GAME"
+
+[node name="Background Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.741176, 0.65098, 0.878431, 1)
+z_index = -1
+position = Vector2(1945.25, 1368.25)
+scale = Vector2(121.422, 85.4843)
+texture = ExtResource("3_tvc3b")
+
+[connection signal="pressed" from="Restart Button" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="Quit Button" to="." method="_on_quit_button_pressed"]
