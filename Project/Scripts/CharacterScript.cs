@@ -27,7 +27,7 @@ public partial class CharacterScript : CharacterBody2D
 	private Sprite2D _idleSprite;
 	private Sprite2D _rightSprite;
 	
-	private float health = 2;
+	private float health = 5;
 	
 	//coyote time vars
 	private float air_time = 0.0f;
@@ -154,11 +154,11 @@ public partial class CharacterScript : CharacterBody2D
 		health -= 1;
 		if (health <= 0){
 			//CharacterBody2D.Call("GameOver");
-			GD.Print("A");
-			EmitSignal("GameOver");
-			GD.Print("B");
-			Call("GameOver");
-			GD.Print("C");
+			GD.Print("You are Dead womp womp");
+			GetTree().ChangeSceneToFile("res://Scenes/Game_Over_HUD.tscn");
+			//GD.Print("B");
+			//Call("GameOver");
+			//GD.Print("C");
 		}
 	}
 

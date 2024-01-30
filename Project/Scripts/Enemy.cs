@@ -12,8 +12,8 @@ private Sprite2D _Sprite;
 
 private Timer timer;
 
-[Export]
-public PackedScene Character { get;set; }
+//[Export]
+//public PackedScene Character { get;set; }
 //public CharacterBody2D player { get; set; }
 
 //cool down time for reversal of direction
@@ -33,7 +33,7 @@ private float CD_thresh = 0.016f;
 	public override void _PhysicsProcess(double delta){
  		Vector2 velocity = Velocity;
 		_Sprite.FlipH = velocity.X < 0;
-		var player = GetNode<CharacterBody2D>("Character/CharacterBody2D");
+		//var player = GetNode<CharacterBody2D>("Character/CharacterBody2D");
 		var collision = MoveAndCollide(velocity * (float)delta);	
 			
 			if (IsOnWall())	{

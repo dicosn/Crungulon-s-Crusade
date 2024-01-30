@@ -66,8 +66,6 @@ sources/1 = SubResource("TileSetAtlasSource_a1j45")
 
 [node name="Main_Test" type="Node"]
 script = ExtResource("1_3cprv")
-enemy_level = ExtResource("4_jrv0b")
-Character = ExtResource("3_b8g3r")
 
 [node name="CharacterNode2D" type="Node2D" parent="."]
 
@@ -77,7 +75,6 @@ Health = NodePath("../../CanvasLayer/HealthLabel")
 
 [node name="Enemy" parent="." instance=ExtResource("4_jrv0b")]
 position = Vector2(743, 958)
-Character = ExtResource("3_b8g3r")
 metadata/_edit_group_ = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

@@ -5,10 +5,10 @@ public partial class Main_Test : Node
 {
 	[Signal]
 	public delegate void GameEventHandler();
-	[Export]
-	public PackedScene enemy_level { get; set; }
-	[Export]
-	public PackedScene Character { get; set; }
+	//[Export]
+	//public PackedScene enemy_level { get; set; }
+	//[Export]
+	//public PackedScene Character { get; set; }
 
 	public void NewGame() {
 
