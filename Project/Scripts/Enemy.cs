@@ -6,6 +6,7 @@ public partial class Enemy : CharacterBody2D
 public int speed = 200;
 public int gravity = 3500;
 private Sprite2D _Sprite;
+public int EnemyHealth = 10;
 
 //cool down time for reversal of direction
 private float move_time = 0.0f;
@@ -24,10 +25,13 @@ private float CD_thresh = 0.016f;
 	public override void _PhysicsProcess(double delta){
  		Vector2 velocity = Velocity;
 		_Sprite.FlipH = velocity.X < 0;
-		var collision = MoveAndCollide(velocity * (float)delta);	
-			
+		var collision = MoveAndCollide(velocity * (float)delta);
+		if(EnemyHealth<= 0){
+			QueueFree();
+		}
 			if (IsOnWall())	{
 				GD.Print("Wall Reached");
+				EnemyHealth -= 1;
 				
 				if(move_time > CD_thresh ){
 			  		speed = -1 * speed;
