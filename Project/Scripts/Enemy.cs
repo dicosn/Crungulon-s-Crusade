@@ -41,7 +41,6 @@ private float CD_thresh = 0.016f;
 				
 				if(move_time > CD_thresh ){
 			  		speed = -1 * speed;
-					//_Sprite.FlipH = velocity.X > 0;		//Flips sprite when hits a wall
 				}
 				else{
 					move_time = 0f;

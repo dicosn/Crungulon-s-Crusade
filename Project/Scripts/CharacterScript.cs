@@ -26,8 +26,8 @@ public partial class CharacterScript : CharacterBody2D
 	private Sprite2D _jumpSprite;
 	private Sprite2D _idleSprite;
 	private Sprite2D _rightSprite;
-	
-	private float health = 5;
+	[Export]
+	public float health = 5;
 	
 	//coyote time vars
 	private float air_time = 0.0f;
@@ -163,6 +163,3 @@ public partial class CharacterScript : CharacterBody2D
 	}
 
 }
-
-
-

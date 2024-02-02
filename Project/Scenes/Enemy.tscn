@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dnare1brnovud" path="res://Assets/Art/sketch1.png" id="2_sqqug"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tupiy"]
-size = Vector2(117, 104)
+size = Vector2(116, 104)
 
 [node name="Enemy" type="CharacterBody2D"]
 collision_layer = 3
@@ -18,5 +18,4 @@ scale = Vector2(0.1, 0.1)
 texture = ExtResource("2_sqqug")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_tupiy")
