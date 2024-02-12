@@ -12,6 +12,10 @@ private Sprite2D _Sprite;
 
 private Timer timer;
 
+public enum State {
+	MOVING,
+	STOP
+}
 //[Export]
 //public PackedScene Character { get;set; }
 //public CharacterBody2D player { get; set; }
@@ -61,8 +65,15 @@ private float CD_thresh = 0.016f;
 		velocity.X = speed;
 		Velocity = velocity;
 		MoveAndSlide();
-	}		
+	}
+			
+	public void OnPlayerDetectorBodyEntered(Node body){
+		Die();
+	}
 	
+	public void Die(){
+		QueueFree();
+	}
 //	private void OnCollision(CollisionShape2D with){
 //		if (with.GetParent() is CharacterBody2D player){
 //			timer.Start(1);
@@ -74,7 +85,7 @@ private float CD_thresh = 0.016f;
 //			timer.Stop();
 //		}
 //	}
-//
+
 //	private void OnTimerTimeout(){
 //		var player = GetNode<CharacterBody2D>("Character/CharacterBody2D");
 //		if (player != null){
@@ -82,9 +93,7 @@ private float CD_thresh = 0.016f;
 //			//GD.Print("Enemy hurt player");
 //		}
 //	}	
-	public void OnVisibleOnScreenNotifier2DScreenExited(){
-		QueueFree();
-	}
+
 //	private void _on_Area2D_body_entered(object body){
 //		GD.Print("Body: " + body + " has entered");
 //		if(body is KinematicBody2D){
@@ -95,5 +104,8 @@ private float CD_thresh = 0.016f;
 //		}
 //	}	
 }
+
+
+
 
 

@@ -1,9 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://r3j7wor5dmfc"]
+[gd_scene load_steps=5 format=3 uid="uid://r3j7wor5dmfc"]
 
 [ext_resource type="Script" path="res://Scripts/Enemy.cs" id="1_bdl6g"]
 [ext_resource type="Texture2D" uid="uid://dnare1brnovud" path="res://Assets/Art/sketch1.png" id="2_sqqug"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tupiy"]
+size = Vector2(116, 104)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wx55e"]
 size = Vector2(116, 104)
 
 [node name="Enemy" type="CharacterBody2D"]
@@ -19,3 +22,11 @@ texture = ExtResource("2_sqqug")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_tupiy")
+
+[node name="PlayerDetector" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector"]
+shape = SubResource("RectangleShape2D_wx55e")
+
+[connection signal="body_entered" from="PlayerDetector" to="." method="OnPlayerDetectorBodyEntered"]
