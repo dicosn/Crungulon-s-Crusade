@@ -33,6 +33,7 @@ public partial class CharacterScript : CharacterBody2D
 	private float air_time = 0.0f;
 	private float ct_thresh = 0.067f;
 	private bool stopped_jumping = false;
+	private bool pause_gravity = false;
 	
 	//jump time vars
 	public float jump_time = 0.0f;
@@ -73,6 +74,7 @@ public partial class CharacterScript : CharacterBody2D
 				air_time = ct_thresh;
 				jump_time = 0f;
 				stopped_jumping = false;
+
 			}
 		}
 		//if holding down jump
@@ -95,7 +97,9 @@ public partial class CharacterScript : CharacterBody2D
 			jump_time = 0f;
 		}
 		else{
-			velocity.Y += Math.Min(gcap,(float)delta*gravity);
+			if(air_time >= ct_thresh){
+				velocity.Y += Math.Min(gcap,(float)delta*gravity);
+			}
 			air_time += (float)delta;
 		}
 		

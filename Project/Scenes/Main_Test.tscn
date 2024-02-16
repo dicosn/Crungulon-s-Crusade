@@ -73,7 +73,6 @@ script = ExtResource("1_3cprv")
 Velocityl = NodePath("../../CanvasLayer/VelocityLabel")
 Health = NodePath("../../CanvasLayer/HealthLabel")
 
-
 [node name="Enemy" parent="." instance=ExtResource("4_jrv0b")]
 position = Vector2(743, 958)
 metadata/_edit_group_ = true
