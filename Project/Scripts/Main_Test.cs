@@ -5,16 +5,11 @@ public partial class Main_Test : Node
 {
 	[Signal]
 	public delegate void GameEventHandler();
-	//[Export]
-	//public PackedScene enemy_level { get; set; }
-	//[Export]
-	//public PackedScene Character { get; set; }
 	
 	public override void _Ready()
 	{
 		GD.Print("Main_Test is ready!");
 	}
-
 
 	public void NewGame() {
 

@@ -12,10 +12,10 @@ private Sprite2D _Sprite;
 
 private Timer timer;
 
-public enum State {
-	MOVING,
-	STOP
-}
+//public enum State {
+//	MOVING,
+//	STOP
+//}
 //[Export]
 //public PackedScene Character { get;set; }
 //public CharacterBody2D player { get; set; }

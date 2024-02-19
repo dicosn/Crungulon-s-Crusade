@@ -9,12 +9,6 @@ public partial class CharacterScript : CharacterBody2D
 	public Label Velocityl;
 	[Export]
 	public Label Health;
-
-	enum State{
-		1,
-		0
-		}
-
 	
 	public int jumpvelocity { get; set; } = 1000;	//was 1500
 	public int gravity = 7500;   //ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
@@ -42,7 +36,7 @@ public partial class CharacterScript : CharacterBody2D
 	public float jump_time = 0.0f;
 	public float jt_thresh = 0.3f;
 	
-	public int State = 1;
+//	public int State = 1;
 //	public float Health	{
 //		get	{	
 //			return health;	
@@ -146,7 +140,6 @@ public partial class CharacterScript : CharacterBody2D
 		}
 	}
 	public void Die(){
-		state = State.0;
 		GetTree().ReloadCurrentScene();
 	}
 //	private void OnInputEvent(CharacterBody2D body){
