@@ -1,6 +1,5 @@
-[gd_scene load_steps=11 format=3 uid="uid://dsvkddsf8svbl"]
+[gd_scene load_steps=10 format=3 uid="uid://dsvkddsf8svbl"]
 
-[ext_resource type="Script" path="res://Scripts/CharacterBody2D.cs" id="1_nvvid"]
 [ext_resource type="Texture2D" uid="uid://bgwx8g6j7638t" path="res://Assets/Character Sprites/l0_DefaultCharacter1.png" id="2_fgyky"]
 [ext_resource type="Texture2D" uid="uid://ltgiudj4onro" path="res://Assets/Character Sprites/l3_DefaultCharacter1.png" id="3_n6xws"]
 [ext_resource type="Texture2D" uid="uid://lap5ibg63ucx" path="res://Assets/Character Sprites/l4_DefaultCharacter1.png" id="4_21gp2"]
@@ -32,7 +31,6 @@ vertical_alignment = 1
 z_index = 2
 position = Vector2(300, 400)
 scale = Vector2(3, 3)
-script = ExtResource("1_nvvid")
 
 [node name="IdleSprite" type="Sprite2D" parent="CharacterBody2D"]
 texture = ExtResource("2_fgyky")

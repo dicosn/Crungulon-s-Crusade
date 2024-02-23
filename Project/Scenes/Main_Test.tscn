@@ -69,9 +69,9 @@ script = ExtResource("1_3cprv")
 
 [node name="CharacterNode2D" type="Node2D" parent="."]
 
-[node name="CharacterBody2D" parent="CharacterNode2D" node_paths=PackedStringArray("Velocityl", "Health") instance=ExtResource("3_b8g3r")]
-Velocityl = NodePath("../../CanvasLayer/VelocityLabel")
-Health = NodePath("../../CanvasLayer/HealthLabel")
+[node name="CharacterBody2D" parent="CharacterNode2D" instance=ExtResource("3_b8g3r")]
+speed = null
+accel = null
 
 [node name="Enemy" parent="." instance=ExtResource("4_jrv0b")]
 position = Vector2(743, 958)
