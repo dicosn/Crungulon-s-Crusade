@@ -36,4 +36,5 @@ drag_vertical_enabled = true
 drag_top_margin = 0.3
 
 [connection signal="Hit" from="." to="." method="OnHit"]
+[connection signal="Hit" from="." to="." method="Player"]
 [connection signal="input_event" from="." to="." method="OnInputEvent"]

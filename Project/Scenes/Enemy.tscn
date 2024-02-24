@@ -1,10 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://r3j7wor5dmfc"]
+[gd_scene load_steps=5 format=3 uid="uid://r3j7wor5dmfc"]
 
 [ext_resource type="Script" path="res://Scripts/Enemy.gd" id="1_66ioj"]
 [ext_resource type="Texture2D" uid="uid://dnare1brnovud" path="res://Assets/Art/sketch1.png" id="2_sqqug"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tupiy"]
 size = Vector2(116, 104)
+
+[sub_resource type="GDScript" id="GDScript_4o4sv"]
+script/source = "extends Area2D
+"
 
 [node name="Enemy" type="CharacterBody2D"]
 collision_layer = 3
@@ -21,6 +25,7 @@ texture = ExtResource("2_sqqug")
 shape = SubResource("RectangleShape2D_tupiy")
 
 [node name="PlayerDetector" type="Area2D" parent="."]
+script = SubResource("GDScript_4o4sv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector"]
 shape = SubResource("RectangleShape2D_tupiy")

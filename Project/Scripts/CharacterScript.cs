@@ -170,3 +170,5 @@ public partial class CharacterScript : CharacterBody2D
 	}
 
 }
+
+
