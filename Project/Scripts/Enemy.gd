@@ -1,7 +1,6 @@
 extends CharacterBody2D
-var speed = Vector2(250,400)
+var speed = Vector2(600,400)
 var gravity = 3500
-
 var player
 	
 func _physics_process(delta):
