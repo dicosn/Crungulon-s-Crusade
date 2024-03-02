@@ -1,7 +1,6 @@
 extends CharacterBody2D
 var speed = Vector2(150,400)
 var gravity = 1000
-
 var player
 	
 func _physics_process(delta):
@@ -15,6 +14,7 @@ func calculate_move_velocity(direction, is_jump_interrupted):
 	var new_velo = velocity
 	if is_on_wall():
 		speed.x *= -1
+		$Sprite2D.flip_h = true
 	new_velo.x = speed.x * direction.x
 	new_velo.y += gravity * get_physics_process_delta_time()
 	if direction.y == -1:
