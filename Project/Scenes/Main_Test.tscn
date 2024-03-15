@@ -6,9 +6,9 @@
 [ext_resource type="Script" path="res://Scripts/Label2.gd" id="3_noddq"]
 [ext_resource type="PackedScene" uid="uid://r3j7wor5dmfc" path="res://Scenes/Enemy.tscn" id="4_jrv0b"]
 [ext_resource type="LabelSettings" uid="uid://dxfnaualhfnqi" path="res://Main_Test.tres" id="5_w51xs"]
-[ext_resource type="Script" path="res://Scripts/PositionLabel.gd" id="7_a8n88"]
 [ext_resource type="Texture2D" uid="uid://c4e1epb315tss" path="res://Assets/Ground Sprites/GroundBlock1small.png" id="7_tjj6o"]
 [ext_resource type="Texture2D" uid="uid://de7sdsfl3ghup" path="res://Assets/Ground Sprites/l00_default sprite tilemap1.png" id="8_l4uqj"]
+[ext_resource type="Script" path="res://smoother.gd" id="10_4f6bm"]
 
 [sub_resource type="FontVariation" id="FontVariation_lbtfr"]
 variation_embolden = 0.79
@@ -70,8 +70,7 @@ script = ExtResource("1_3cprv")
 [node name="CharacterNode2D" type="Node2D" parent="."]
 
 [node name="CharacterBody2D" parent="CharacterNode2D" instance=ExtResource("3_b8g3r")]
-speed = null
-accel = null
+jumpvelocity = 950
 
 [node name="Enemy" parent="." instance=ExtResource("4_jrv0b")]
 position = Vector2(743, 958)
@@ -111,7 +110,6 @@ offset_right = 81.0
 offset_bottom = 306.0
 text = "100"
 label_settings = ExtResource("5_w51xs")
-script = ExtResource("7_a8n88")
 
 [node name="HealthLabel" type="Label" parent="CanvasLayer"]
 offset_left = 12.0
@@ -145,4 +143,5 @@ layer_0/tile_data = PackedInt32Array(1638400, 65551, 0, 1638401, 65551, 0, 16384
 [node name="PlayerStartPosition" type="Marker2D" parent="."]
 position = Vector2(1653, 475)
 
-[connection signal="Game" from="." to="." method="GameOver"]
+[node name="Smoother" type="Node" parent="."]
+script = ExtResource("10_4f6bm")
