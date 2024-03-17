@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://c4e1epb315tss" path="res://Assets/Ground Sprites/GroundBlock1small.png" id="7_tjj6o"]
 [ext_resource type="Texture2D" uid="uid://de7sdsfl3ghup" path="res://Assets/Ground Sprites/l00_default sprite tilemap1.png" id="8_l4uqj"]
 
-[sub_resource type="FontVariation" id="FontVariation_lbtfr"]
+[sub_resource type="FontVariation" id="FontVariation_mxex8"]
 variation_embolden = 0.79
 opentype_features = {
 1936928817: 1
@@ -20,7 +20,7 @@ spacing_glyph = -2
 spacing_space = 15
 
 [sub_resource type="LabelSettings" id="LabelSettings_g86og"]
-font = SubResource("FontVariation_lbtfr")
+font = SubResource("FontVariation_mxex8")
 font_size = 60
 font_color = Color(0.823529, 0.721569, 0.92549, 1)
 outline_size = 40
