@@ -1,14 +1,12 @@
-[gd_scene load_steps=17 format=3 uid="uid://cirdy2tvrl1ng"]
+[gd_scene load_steps=15 format=3 uid="uid://cirdy2tvrl1ng"]
 
 [ext_resource type="Script" path="res://Scripts/Main_Test.cs" id="1_3cprv"]
 [ext_resource type="TileSet" uid="uid://djsrcvgw8iqnd" path="res://new_tile_set.tres" id="1_ffq8e"]
 [ext_resource type="PackedScene" uid="uid://bj8wa1vw6x6ha" path="res://Scenes/Character.tscn" id="3_b8g3r"]
-[ext_resource type="Script" path="res://Scripts/Label2.gd" id="3_noddq"]
 [ext_resource type="PackedScene" uid="uid://r3j7wor5dmfc" path="res://Scenes/Enemy.tscn" id="4_jrv0b"]
 [ext_resource type="LabelSettings" uid="uid://dxfnaualhfnqi" path="res://Main_Test.tres" id="5_w51xs"]
-[ext_resource type="Script" path="res://Scripts/PositionLabel.gd" id="7_a8n88"]
-[ext_resource type="Script" path="res://Scripts/HealthLabel.gd" id="7_qhytk"]
 [ext_resource type="Texture2D" uid="uid://c4e1epb315tss" path="res://Assets/Ground Sprites/GroundBlock1small.png" id="7_tjj6o"]
+[ext_resource type="Script" path="res://smoother.gd" id="8_2q64h"]
 [ext_resource type="Texture2D" uid="uid://de7sdsfl3ghup" path="res://Assets/Ground Sprites/l00_default sprite tilemap1.png" id="8_l4uqj"]
 
 [sub_resource type="FontVariation" id="FontVariation_mxex8"]
@@ -59,8 +57,7 @@ texture = ExtResource("8_l4uqj")
 1:1/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSet" id="TileSet_3ewt8"]
-physics_layer_0/collision_layer = 2
-physics_layer_0/collision_mask = 2
+physics_layer_0/collision_layer = 1
 physics_layer_0/physics_material = SubResource("PhysicsMaterial_jifdx")
 sources/0 = SubResource("TileSetAtlasSource_dy5gx")
 sources/1 = SubResource("TileSetAtlasSource_a1j45")
@@ -70,9 +67,7 @@ script = ExtResource("1_3cprv")
 
 [node name="CharacterNode2D" type="Node2D" parent="."]
 
-[node name="Player" parent="CharacterNode2D" node_paths=PackedStringArray("Velocityl", "Health") instance=ExtResource("3_b8g3r")]
-Velocityl = NodePath("../../CanvasLayer/VelocityLabel")
-Health = NodePath("../../CanvasLayer/HealthLabel")
+[node name="Player" parent="CharacterNode2D" instance=ExtResource("3_b8g3r")]
 
 [node name="Enemy" parent="." instance=ExtResource("4_jrv0b")]
 position = Vector2(743, 958)
@@ -95,7 +90,6 @@ offset_right = 79.0
 offset_bottom = 158.0
 text = "FPS"
 label_settings = ExtResource("5_w51xs")
-script = ExtResource("3_noddq")
 
 [node name="VelocityLabel" type="Label" parent="CanvasLayer"]
 offset_left = 12.0
@@ -112,7 +106,6 @@ offset_right = 81.0
 offset_bottom = 306.0
 text = "100"
 label_settings = ExtResource("5_w51xs")
-script = ExtResource("7_a8n88")
 
 [node name="HealthLabel" type="Label" parent="CanvasLayer"]
 offset_left = 12.0
@@ -121,7 +114,6 @@ offset_right = 81.0
 offset_bottom = 384.0
 text = "100"
 label_settings = ExtResource("5_w51xs")
-script = ExtResource("7_qhytk")
 
 [node name="GroundTileMap" type="TileMap" parent="."]
 scale = Vector2(4, 4)
@@ -147,3 +139,6 @@ layer_0/tile_data = PackedInt32Array(1638400, 65551, 0, 1638401, 65551, 0, 16384
 
 [node name="PlayerStartPosition" type="Marker2D" parent="."]
 position = Vector2(1653, 475)
+
+[node name="Smoother" type="Node" parent="."]
+script = ExtResource("8_2q64h")

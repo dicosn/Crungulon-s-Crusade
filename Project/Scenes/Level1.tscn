@@ -3,7 +3,7 @@
 [ext_resource type="TileSet" uid="uid://cmhsv7pjnh2t8" path="res://Assets/Ground Sprites/Ground_tile_set.tres" id="1_vlmhi"]
 [ext_resource type="PackedScene" uid="uid://bj8wa1vw6x6ha" path="res://Scenes/Character.tscn" id="2_4fvmv"]
 [ext_resource type="LabelSettings" uid="uid://dxfnaualhfnqi" path="res://Main_Test.tres" id="3_dt5j1"]
-[ext_resource type="Script" path="res://Scripts/Label2.gd" id="4_aw4gm"]
+[ext_resource type="Script" path="res://Scripts/FPSLabel.gd" id="3_wltef"]
 [ext_resource type="Script" path="res://Scripts/PositionLabel.gd" id="5_t4l6e"]
 [ext_resource type="Script" path="res://Scripts/HealthLabel.gd" id="6_qtqv1"]
 
@@ -29,11 +29,9 @@ shadow_offset = Vector2(10, 10)
 
 [node name="CharacterNode2D" type="Node2D" parent="."]
 
-[node name="Player" parent="CharacterNode2D" node_paths=PackedStringArray("Velocityl", "Health") instance=ExtResource("2_4fvmv")]
+[node name="Player" parent="CharacterNode2D" instance=ExtResource("2_4fvmv")]
 position = Vector2(986, 541)
 scale = Vector2(4.5, 4.5)
-Velocityl = NodePath("../../CanvasLayer/VelocityLabel")
-Health = NodePath("../../CanvasLayer/HealthLabel")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -52,7 +50,7 @@ offset_right = 79.0
 offset_bottom = 158.0
 text = "FPS"
 label_settings = ExtResource("3_dt5j1")
-script = ExtResource("4_aw4gm")
+script = ExtResource("3_wltef")
 
 [node name="VelocityLabel" type="Label" parent="CanvasLayer"]
 offset_left = 12.0
