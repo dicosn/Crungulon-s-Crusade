@@ -24,11 +24,14 @@ window/size/mode=2
 window/size/initial_position_type=0
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
-window/vsync/vsync_mode=0
 
 [dotnet]
 
 project/assembly_name="Crungulon-s-crusade"
+
+[editor_plugins]
+
+enabled=PackedStringArray()
 
 [input]
 
