@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://b5a7cx14utc5x"]
 
-[ext_resource type="Theme" uid="uid://bly3q8wp85gkd" path="res://Assets/new_theme.tres" id="1_8anwe"]
+[ext_resource type="Theme" uid="uid://b1w1jnum450ep" path="res://Assets/new_theme.tres" id="1_8anwe"]
 [ext_resource type="Script" path="res://Scripts/Game_Over_HUD.cs" id="1_dvhri"]
 [ext_resource type="Texture2D" uid="uid://ddqf8wc80oapl" path="res://Assets/Art/sketch2.jpg" id="2_vwa5g"]
 [ext_resource type="Texture2D" uid="uid://de7sdsfl3ghup" path="res://Assets/Ground Sprites/l00_default sprite tilemap1.png" id="3_tvc3b"]
