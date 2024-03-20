@@ -1,9 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://cirdy2tvrl1ng"]
+[gd_scene load_steps=16 format=3 uid="uid://cirdy2tvrl1ng"]
 
 [ext_resource type="Script" path="res://Scripts/Main_Test.cs" id="1_3cprv"]
 [ext_resource type="TileSet" uid="uid://djsrcvgw8iqnd" path="res://new_tile_set.tres" id="1_ffq8e"]
 [ext_resource type="PackedScene" uid="uid://bj8wa1vw6x6ha" path="res://Scenes/Character.tscn" id="3_b8g3r"]
 [ext_resource type="PackedScene" uid="uid://r3j7wor5dmfc" path="res://Scenes/Enemy.tscn" id="4_jrv0b"]
+[ext_resource type="Script" path="res://Scripts/FPSLabel.gd" id="5_8v6e3"]
 [ext_resource type="LabelSettings" uid="uid://dxfnaualhfnqi" path="res://Main_Test.tres" id="5_w51xs"]
 [ext_resource type="Texture2D" uid="uid://c4e1epb315tss" path="res://Assets/Ground Sprites/GroundBlock1small.png" id="7_tjj6o"]
 [ext_resource type="Script" path="res://smoother.gd" id="8_2q64h"]
@@ -90,6 +91,7 @@ offset_right = 79.0
 offset_bottom = 158.0
 text = "FPS"
 label_settings = ExtResource("5_w51xs")
+script = ExtResource("5_8v6e3")
 
 [node name="VelocityLabel" type="Label" parent="CanvasLayer"]
 offset_left = 12.0

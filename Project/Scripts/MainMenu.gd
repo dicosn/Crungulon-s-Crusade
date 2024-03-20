@@ -25,7 +25,7 @@ func _on_start_button_pressed():
 #	$"Crungulon Sprite2D".hide()
 #	$TitleLabel.hide()
 #	$"GrayBoxSprite2D".hide()
-	get_tree().change_scene_to_file("res://Scenes/Main_Test.tscn")
+	get_tree().change_scene_to_file("res://Scenes/Level1.tscn")
 	
 func _on_quit_button_pressed():
 	Quit_Button.emit()
