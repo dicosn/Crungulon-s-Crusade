@@ -6,4 +6,4 @@ spacing_glyph = 10
 
 [resource]
 default_font = SubResource("FontVariation_owaby")
-default_font_size = 46
+default_font_size = 45

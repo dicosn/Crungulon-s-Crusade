@@ -9,6 +9,7 @@ public partial class Main_Test : Node
 	public override void _Ready()
 	{
 		GD.Print("Main_Test is ready!");
+
 	}
 
 	public void NewGame() {
@@ -16,7 +17,7 @@ public partial class Main_Test : Node
 		var player = GetNode<CharacterBody2D>("Character/CharacterBody2D");
 		var startPosition = GetNode<Marker2D>("PlayerStartPosition");
 		player.Position = startPosition.Position;
-		
+
 		GetNode<Timer>("StartTimer").Start();
 		GetNode<Timer>("MobTimer").Start();
 		
