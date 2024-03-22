@@ -1,6 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://bkkn0p17ppg85"]
+[gd_scene load_steps=9 format=3 uid="uid://7736nh0s3fgl"]
 
-[ext_resource type="TileSet" uid="uid://cmhsv7pjnh2t8" path="res://Assets/Ground Sprites/Ground_tile_set.tres" id="1_vlmhi"]
+[ext_resource type="TileSet" uid="uid://buramtnh0i0d1" path="res://Assets/Ground Sprites/Ground_tile_set.tres" id="1_vlmhi"]
 [ext_resource type="PackedScene" uid="uid://bj8wa1vw6x6ha" path="res://Scenes/Character.tscn" id="2_4fvmv"]
 [ext_resource type="LabelSettings" uid="uid://dxfnaualhfnqi" path="res://Main_Test.tres" id="3_dt5j1"]
 [ext_resource type="Script" path="res://Scripts/FPSLabel.gd" id="3_wltef"]

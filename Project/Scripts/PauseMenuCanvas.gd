@@ -9,7 +9,7 @@ func _ready():
 	hide()
 	process_mode = Node.PROCESS_MODE_PAUSABLE
 
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_pressed("key_exit"):
 		show()
 		print("bring up menu")

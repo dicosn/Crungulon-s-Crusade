@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=4 format=3 uid="uid://cmhsv7pjnh2t8"]
+[gd_resource type="TileSet" load_steps=4 format=3 uid="uid://buramtnh0i0d1"]
 
 [ext_resource type="Texture2D" uid="uid://claolnvbg3y43" path="res://Assets/Ground Sprites/GroundTilemap.png" id="1_w0m0u"]
 
@@ -57,7 +57,7 @@ texture_region_size = Vector2i(100, 100)
 3:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(50, -50, 50, 50, -50, 50)
 4:5/0 = 0
 4:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-4:5/0/physics_layer_0/angular_velocity = 1.0
+4:5/0/physics_layer_0/angular_velocity = 0.0
 4:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(50, -50, 50, 50, -50, 50)
 5:5/0 = 0
 5:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)

@@ -53,7 +53,7 @@ func _ready():
 func _process(delta):
 	h_input()
 	# If jump button pressed
-	if Input.is_key_pressed(KEY_SPACE):
+	if Input.is_action_pressed("ui_accept"):
 		# And on the floor
 		if is_on_floor():
 			# Then you can jump
@@ -66,14 +66,14 @@ func _process(delta):
 			stopped_jumping = false
 
 # If holding down jump
-	if Input.is_key_pressed(KEY_SPACE) and not stopped_jumping:
+	if Input.is_action_pressed("ui_accept") and not stopped_jumping:
 		# And threshold not reached
 		if jump_time < jt_thresh:
 			# Keep jumping
 			velocity.y = -jumpvelocity * 1.25
 			jump_time += delta
 
-	if not Input.is_key_pressed(KEY_SPACE):
+	if not Input.is_action_pressed("ui_accept"):
 		jump_time = jt_thresh
 		stopped_jumping = true
 
