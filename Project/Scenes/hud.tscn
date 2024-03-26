@@ -1,27 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://jc2g86fe4ckr"]
+[gd_scene load_steps=6 format=3 uid="uid://jc2g86fe4ckr"]
 
 [ext_resource type="Script" path="res://Scripts/MainMenu.gd" id="1_p3din"]
+[ext_resource type="LabelSettings" path="res://Assets/Fonts/hud.tres" id="2_dgiia"]
 [ext_resource type="Theme" uid="uid://b1w1jnum450ep" path="res://Assets/new_theme.tres" id="2_hwvqf"]
 [ext_resource type="Texture2D" uid="uid://de7sdsfl3ghup" path="res://Assets/Ground Sprites/l00_default sprite tilemap1.png" id="2_qnw50"]
 [ext_resource type="Texture2D" uid="uid://ddqf8wc80oapl" path="res://Assets/Art/sketch2.jpg" id="3_fc3p2"]
-
-[sub_resource type="FontVariation" id="FontVariation_m4iuw"]
-variation_embolden = 0.79
-opentype_features = {
-1936928817: 1
-}
-spacing_glyph = -2
-spacing_space = 15
-
-[sub_resource type="LabelSettings" id="LabelSettings_uotjk"]
-font = SubResource("FontVariation_m4iuw")
-font_size = 200
-font_color = Color(0.807843, 0.803922, 0.0156863, 1)
-outline_size = 80
-outline_color = Color(0.2, 0.317647, 0.517647, 1)
-shadow_size = 120
-shadow_color = Color(0, 0, 0, 1)
-shadow_offset = Vector2(15, 20)
 
 [node name="HUD" type="CanvasLayer"]
 follow_viewport_enabled = true
@@ -42,7 +25,7 @@ grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 1
 text = "Crungulon's Crusade"
-label_settings = SubResource("LabelSettings_uotjk")
+label_settings = ExtResource("2_dgiia")
 
 [node name="Start Button" type="Button" parent="."]
 anchors_preset = 8
