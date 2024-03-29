@@ -2,7 +2,7 @@ extends CharacterBody2D
 var speed = Vector2(600,400)
 var gravity = 3500
 var player
-var max_collisions = 3
+var max_collisions = 6
 var collision_count = 0
 
 func _physics_process(delta):
