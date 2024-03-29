@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://7736nh0s3fgl"]
+[gd_scene load_steps=10 format=3 uid="uid://7736nh0s3fgl"]
 
 [ext_resource type="TileSet" uid="uid://buramtnh0i0d1" path="res://Assets/Ground Sprites/Ground_tile_set.tres" id="1_vlmhi"]
 [ext_resource type="PackedScene" uid="uid://bj8wa1vw6x6ha" path="res://Scenes/Character.tscn" id="2_4fvmv"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Scripts/FPSLabel.gd" id="3_wltef"]
 [ext_resource type="Theme" uid="uid://c8a2tvd46pnpy" path="res://Assets/Fonts/PurpleButton.tres" id="5_73inv"]
 [ext_resource type="Script" path="res://Scripts/PauseMenuCanvas.gd" id="5_bqas5"]
+[ext_resource type="Script" path="res://smoother.gd" id="7_6ap54"]
 
 [sub_resource type="FontVariation" id="FontVariation_lbtfr"]
 variation_embolden = 0.79
@@ -153,6 +154,9 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("5_73inv")
 text = "Quit"
+
+[node name="Smoother" type="Node" parent="."]
+script = ExtResource("7_6ap54")
 
 [connection signal="pressed" from="PauseMenuCanvas/ResumeButton" to="PauseMenuCanvas" method="_on_resume_button_pressed"]
 [connection signal="pressed" from="PauseMenuCanvas/MenuButton" to="PauseMenuCanvas" method="_on_menu_button_pressed"]
