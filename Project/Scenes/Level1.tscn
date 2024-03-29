@@ -1,12 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://bkkn0p17ppg85"]
+[gd_scene load_steps=11 format=3 uid="uid://dqyoycpe4jl4v"]
 
-[ext_resource type="TileSet" uid="uid://cmhsv7pjnh2t8" path="res://Assets/Ground Sprites/Ground_tile_set.tres" id="1_vlmhi"]
+[ext_resource type="TileSet" uid="uid://cc4eykukbguky" path="res://Assets/Ground Sprites/Ground_tile_set.tres" id="1_vlmhi"]
 [ext_resource type="PackedScene" uid="uid://bj8wa1vw6x6ha" path="res://Scenes/Character.tscn" id="2_4fvmv"]
-[ext_resource type="PackedScene" uid="uid://r3j7wor5dmfc" path="res://Scenes/Enemy.tscn" id="2_ssvyu"]
+[ext_resource type="PackedScene" uid="uid://dnn4qvd5a1v8l" path="res://Scenes/Enemy.tscn" id="2_ssvyu"]
 [ext_resource type="Texture2D" uid="uid://de7sdsfl3ghup" path="res://Assets/Ground Sprites/l00_default sprite tilemap1.png" id="3_bsjgc"]
 [ext_resource type="LabelSettings" uid="uid://dxfnaualhfnqi" path="res://Main_Test.tres" id="3_dt5j1"]
 [ext_resource type="Script" path="res://Scripts/FPSLabel.gd" id="3_wltef"]
-[ext_resource type="Theme" uid="uid://c8a2tvd46pnpy" path="res://Assets/Fonts/PurpleButton.tres" id="5_73inv"]
+[ext_resource type="Theme" uid="uid://dl58df2vluest" path="res://Assets/Fonts/PurpleButton.tres" id="5_73inv"]
 [ext_resource type="Script" path="res://Scripts/PauseMenuCanvas.gd" id="5_bqas5"]
 
 [sub_resource type="FontVariation" id="FontVariation_lbtfr"]

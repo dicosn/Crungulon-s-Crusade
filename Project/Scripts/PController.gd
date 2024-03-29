@@ -23,6 +23,7 @@ var _leftSprite: Sprite2D
 var _jumpSprite: Sprite2D
 var _idleSprite: Sprite2D
 var _rightSprite: Sprite2D
+var health = 5
 
 func h_input():
 	#more affects the turnaround time
@@ -48,6 +49,18 @@ func _ready():
 	_rightSprite = get_node("RightSprite")
 	_jumpSprite = get_node("JumpSprite")
 
+func hit(value: float):
+	health -= value
+	print(health)
+	if(health <= 0):
+		print("you are dead")
+#		queue_free()
+
+#func on_hit():
+#	print(health)
+#	health -= 1
+#	if (health <= 0):
+#		print("You are Dead womp womp")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
