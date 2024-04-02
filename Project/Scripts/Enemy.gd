@@ -1,12 +1,12 @@
 extends CharacterBody2D
 var speed = Vector2(600,400)
 var gravity = 3500
-var player
 var max_collisions = 6
 var collision_count = 0
 
 func _physics_process(delta):
 	var velocity = Vector2(0,0)
+
 #	for i in get_slide_collision_count():
 #		var collision = get_slide_collision(i)
 #		if (collision.get_collider().has_method("on_hit")):
@@ -14,7 +14,6 @@ func _physics_process(delta):
 #			collision.get_collider().call("on_hit")
 	
 	var collision = move_and_collide(velocity*delta)
-	print(collision)
 	while(collision and get_slide_collision_count() < max_collisions):
 		var collider = collision.get_collider()
 		if collider is CharacterBody2D:

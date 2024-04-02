@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://ltgiudj4onro" path="res://Assets/Character Sprites/l3_DefaultCharacter1.png" id="3_mf24n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8uf1c"]
+size = Vector2(22.6667, 20)
 
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(3, 3)
