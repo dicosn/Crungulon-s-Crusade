@@ -1,11 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://bj8wa1vw6x6ha"]
+[gd_scene load_steps=6 format=3 uid="uid://bj8wa1vw6x6ha"]
 
 [ext_resource type="Script" path="res://Scripts/PController.gd" id="1_llwx5"]
 [ext_resource type="Texture2D" uid="uid://bgwx8g6j7638t" path="res://Assets/Character Sprites/l0_DefaultCharacter1.png" id="1_yf8bj"]
 [ext_resource type="Texture2D" uid="uid://ltgiudj4onro" path="res://Assets/Character Sprites/l3_DefaultCharacter1.png" id="3_mf24n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8uf1c"]
-size = Vector2(22.6667, 20)
+size = Vector2(21, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_48vu4"]
+size = Vector2(20.3333, 19.3333)
 
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(3, 3)
@@ -24,6 +27,7 @@ visible = false
 texture = ExtResource("1_yf8bj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.166667, 0)
 shape = SubResource("RectangleShape2D_8uf1c")
 
 [node name="CoyoteTime" type="Timer" parent="."]
@@ -33,5 +37,12 @@ one_shot = true
 [node name="Camera2D" type="Camera2D" parent="."]
 drag_vertical_enabled = true
 drag_top_margin = 0.3
+
+[node name="Hurtbox" type="Area2D" parent="."]
+
+[node name="HurtboxCollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(-0.166667, 4.76837e-07)
+shape = SubResource("RectangleShape2D_48vu4")
+debug_color = Color(0.784314, 0, 0.235294, 0.419608)
 
 [connection signal="input_event" from="." to="." method="OnInputEvent"]

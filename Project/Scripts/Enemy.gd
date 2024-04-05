@@ -1,31 +1,15 @@
 extends CharacterBody2D
 var speed = Vector2(600,400)
 var gravity = 3500
-var max_collisions = 6
-var collision_count = 0
 
 func _physics_process(delta):
 	var velocity = Vector2(0,0)
 
-#	for i in get_slide_collision_count():
-#		var collision = get_slide_collision(i)
-#		if (collision.get_collider().has_method("on_hit")):
-#			print("hit2")
-#			collision.get_collider().call("on_hit")
-	
+#	Collision attempt 1
 	var collision = move_and_collide(velocity*delta)
-	while(collision and get_slide_collision_count() < max_collisions):
-		var collider = collision.get_collider()
-		if collider is CharacterBody2D:
-			collider.hit(1)
-			break
-		else:
-			var normal = collision.get_normal()
-			var remainder = collision.get_remainder()
-			velocity = velocity.bounce(normal)
-			remainder = remainder.bounce(normal)
-			collision_count += 1
-			collision = move_and_collide(remainder)
+	if(collision):
+		if (collision.get_collider().has_method("on_hit")):
+			collision.get_collider().call("on_hit")
 	
 	var is_jump_interrupted = Input.is_key_pressed(KEY_SPACE) and velocity.y < 0.0
 	var direction = Vector2(1,1)
@@ -47,10 +31,11 @@ func calculate_move_velocity(direction, is_jump_interrupted):
 func die():
 	queue_free()
 
-func OnPlayerDetectorBodyEntered(body):
-	pass
-
+# Remnant of collision from C
 #func OnPlayerDetectorBodyExited(body):
 #if body.name == "Player":
 #print("player exited")
 #chase = false
+
+func _on_player_detector_area_entered(area):
+	print("area entered")

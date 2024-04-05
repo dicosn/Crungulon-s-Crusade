@@ -25,11 +25,12 @@ texture = ExtResource("2_sqqug")
 shape = SubResource("RectangleShape2D_tupiy")
 
 [node name="PlayerDetector" type="Area2D" parent="."]
+collision_layer = 4
 script = SubResource("GDScript_4o4sv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector"]
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_tupiy")
+debug_color = Color(1, 0, 0.117647, 0.419608)
 
-[connection signal="body_entered" from="PlayerDetector" to="." method="OnPlayerDetectorBodyEntered"]
-[connection signal="body_exited" from="PlayerDetector" to="." method="OnPlayerDetectorBodyExited"]
+[connection signal="area_entered" from="PlayerDetector" to="." method="_on_player_detector_area_entered"]

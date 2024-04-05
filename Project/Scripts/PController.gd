@@ -56,11 +56,12 @@ func hit(value: float):
 		print("you are dead")
 #		queue_free()
 
-#func on_hit():
-#	print(health)
-#	health -= 1
-#	if (health <= 0):
-#		print("You are Dead womp womp")
+# Remnant of collision from C
+func on_hit():
+	print(health)
+	health -= 1
+	if (health <= 0):
+		print("You are Dead womp womp")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
