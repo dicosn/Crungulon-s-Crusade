@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dnare1brnovud" path="res://Assets/Art/sketch1.png" id="2_sqqug"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tupiy"]
-size = Vector2(118, 105)
+size = Vector2(116, 103)
 
 [sub_resource type="GDScript" id="GDScript_4o4sv"]
 script/source = "extends Area2D
@@ -29,7 +29,7 @@ collision_layer = 4
 script = SubResource("GDScript_4o4sv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector"]
-position = Vector2(0, -0.5)
+scale = Vector2(1.1, 1.1)
 shape = SubResource("RectangleShape2D_tupiy")
 debug_color = Color(1, 0, 0.117647, 0.419608)
 

@@ -100,3 +100,9 @@ func _process(delta):
 		air_time += delta
 
 	move_and_slide()
+
+
+func _on_hurtbox_body_entered(body: Node2D):
+	if(body.is_in_group("Enemy")):
+		print("enemy entered")
+	

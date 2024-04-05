@@ -8,10 +8,11 @@
 size = Vector2(21, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_48vu4"]
-size = Vector2(20.3333, 19.3333)
+size = Vector2(21.6667, 20.6667)
 
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(3, 3)
+collision_mask = 2
 script = ExtResource("1_llwx5")
 metadata/_edit_group_ = true
 
@@ -39,6 +40,7 @@ drag_vertical_enabled = true
 drag_top_margin = 0.3
 
 [node name="Hurtbox" type="Area2D" parent="."]
+collision_mask = 4
 
 [node name="HurtboxCollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 position = Vector2(-0.166667, 4.76837e-07)
@@ -46,3 +48,4 @@ shape = SubResource("RectangleShape2D_48vu4")
 debug_color = Color(0.784314, 0, 0.235294, 0.419608)
 
 [connection signal="input_event" from="." to="." method="OnInputEvent"]
+[connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]

@@ -1,16 +1,17 @@
 extends CharacterBody2D
 var speed = Vector2(600,400)
 var gravity = 3500
+var counter = 0
 
 func _physics_process(delta):
 	var velocity = Vector2(0,0)
 
 #	Collision attempt 1
-	var collision = move_and_collide(velocity*delta)
-	if(collision):
-		if (collision.get_collider().has_method("on_hit")):
-			collision.get_collider().call("on_hit")
-	
+#	var collision = move_and_collide(velocity*delta)
+#	if(collision):
+#		if (collision.get_collider().has_method("on_hit")):
+#			collision.get_collider().call("on_hit")
+#
 	var is_jump_interrupted = Input.is_key_pressed(KEY_SPACE) and velocity.y < 0.0
 	var direction = Vector2(1,1)
 	calculate_move_velocity(direction, is_jump_interrupted)
@@ -38,4 +39,5 @@ func die():
 #chase = false
 
 func _on_player_detector_area_entered(area):
-	print("area entered")
+	counter += 1
+	print("area entered ", counter)
