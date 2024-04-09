@@ -63,3 +63,4 @@ key_exit={
 2d_physics/layer_1="Player"
 2d_physics/layer_2="Enviroment"
 2d_physics/layer_3="Enemy"
+2d_physics/layer_4="Layer 4"

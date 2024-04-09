@@ -40,10 +40,10 @@ drag_vertical_enabled = true
 drag_top_margin = 0.3
 
 [node name="Hurtbox" type="Area2D" parent="."]
-collision_mask = 4
+collision_mask = 6
 
 [node name="HurtboxCollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
-position = Vector2(-0.166667, 4.76837e-07)
+position = Vector2(-0.166667, 0)
 shape = SubResource("RectangleShape2D_48vu4")
 debug_color = Color(0.784314, 0, 0.235294, 0.419608)
 

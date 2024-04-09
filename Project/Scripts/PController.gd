@@ -49,19 +49,13 @@ func _ready():
 	_rightSprite = get_node("RightSprite")
 	_jumpSprite = get_node("JumpSprite")
 
-func hit(value: float):
-	health -= value
-	print(health)
-	if(health <= 0):
-		print("you are dead")
-#		queue_free()
-
 # Remnant of collision from C
 func on_hit():
 	print(health)
 	health -= 1
 	if (health <= 0):
 		print("You are Dead womp womp")
+		queue_free()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -101,8 +95,6 @@ func _process(delta):
 
 	move_and_slide()
 
-
 func _on_hurtbox_body_entered(body: Node2D):
 	if(body.is_in_group("Enemy")):
-		print("enemy entered")
-	
+		on_hit()
