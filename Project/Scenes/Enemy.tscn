@@ -48,7 +48,7 @@ _data = {
 script/source = "extends Area2D
 "
 
-[node name="Enemy" type="CharacterBody2D"]
+[node name="Enemy" type="CharacterBody2D" groups=["Enemy"]]
 collision_layer = 3
 collision_mask = 3
 platform_floor_layers = 1
@@ -74,11 +74,13 @@ libraries = {
 }
 
 [node name="PlayerDetector" type="Area2D" parent="."]
+collision_layer = 4
 script = SubResource("GDScript_4o4sv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector"]
 position = Vector2(0, 12)
+scale = Vector2(1.1, 1.1)
 shape = SubResource("RectangleShape2D_tupiy")
+debug_color = Color(0.890196, 0.247059, 0.533333, 0.419608)
 
-[connection signal="body_entered" from="PlayerDetector" to="." method="OnPlayerDetectorBodyEntered"]
-[connection signal="body_exited" from="PlayerDetector" to="." method="OnPlayerDetectorBodyExited"]
+[connection signal="area_entered" from="PlayerDetector" to="." method="_on_player_detector_area_entered"]

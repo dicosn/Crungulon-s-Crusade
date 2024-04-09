@@ -1,12 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://bj8wa1vw6x6ha"]
+[gd_scene load_steps=7 format=3 uid="uid://bj8wa1vw6x6ha"]
 
 [ext_resource type="Script" path="res://Scripts/PController.gd" id="1_llwx5"]
 [ext_resource type="Texture2D" uid="uid://bgwx8g6j7638t" path="res://Assets/Character Sprites/l0_DefaultCharacter1.png" id="1_yf8bj"]
 [ext_resource type="Texture2D" uid="uid://cr8nkoepfdc4t" path="res://Assets/Character Sprites/3_4 angle player.png" id="2_54v2c"]
 [ext_resource type="Texture2D" uid="uid://ltgiudj4onro" path="res://Assets/Character Sprites/l3_DefaultCharacter1.png" id="3_mf24n"]
 
-[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_goerb"]
-points = PackedVector2Array(10, 15, 8, -5, 6, -12, -6, -12, -10, -5, -10, 15)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_omlgi"]
+size = Vector2(13.38, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ax4ij"]
+size = Vector2(20, 24)
 
 [node name="Player" type="CharacterBody2D"]
 z_index = 3
@@ -28,8 +31,8 @@ visible = false
 texture = ExtResource("1_yf8bj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1.66667, 5.33333)
-shape = SubResource("ConvexPolygonShape2D_goerb")
+position = Vector2(-1.66667, 8)
+shape = SubResource("RectangleShape2D_omlgi")
 
 [node name="CoyoteTime" type="Timer" parent="."]
 wait_time = 0.15
@@ -40,4 +43,14 @@ zoom = Vector2(1.5, 1.5)
 drag_vertical_enabled = true
 drag_top_margin = 0.3
 
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_mask = 6
+
+[node name="HurtboxCollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(-1.66667, 7.66667)
+scale = Vector2(1.05, 1.05)
+shape = SubResource("RectangleShape2D_ax4ij")
+debug_color = Color(0.941176, 0.0941176, 0.54902, 0.419608)
+
 [connection signal="input_event" from="." to="." method="OnInputEvent"]
+[connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]

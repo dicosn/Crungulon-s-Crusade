@@ -23,6 +23,7 @@ var _leftSprite: Sprite2D
 var _jumpSprite: Sprite2D
 var _idleSprite: Sprite2D
 var _rightSprite: Sprite2D
+@export var health = 5
 
 func h_input():
 	#more affects the turnaround time
@@ -50,6 +51,12 @@ func _ready():
 	_rightSprite = get_node("RightSprite")
 	_jumpSprite = get_node("JumpSprite")
 
+func on_hit():
+	health -= 1
+	print(health)
+	if (health <= 0):
+		print("You are Dead womp womp")
+		get_tree().change_scene_to_file("res://Scenes/hud.tscn")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -88,3 +95,8 @@ func _process(delta):
 		air_time += delta
 
 	move_and_slide()
+
+
+func _on_hurtbox_body_entered(body):
+	if(body.is_in_group("Enemy")):
+		on_hit()
