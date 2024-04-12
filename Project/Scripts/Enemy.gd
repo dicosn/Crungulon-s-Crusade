@@ -25,10 +25,5 @@ func calculate_move_velocity(direction, is_jump_interrupted):
 func die():
 	queue_free()
 
-func OnPlayerDetectorBodyEntered(body):
-	pass
-
-#func OnPlayerDetectorBodyExited(body):
-#if body.name == "Player":
-#print("player exited")
-#chase = false
+func _on_player_detector_area_entered(area):
+	pass # Replace with function body.

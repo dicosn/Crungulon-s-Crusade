@@ -1,16 +1,54 @@
-[gd_scene load_steps=5 format=3 uid="uid://r3j7wor5dmfc"]
+[gd_scene load_steps=8 format=3 uid="uid://r3j7wor5dmfc"]
 
 [ext_resource type="Script" path="res://Scripts/Enemy.gd" id="1_66ioj"]
-[ext_resource type="Texture2D" uid="uid://dnare1brnovud" path="res://Assets/Art/sketch1.png" id="2_sqqug"]
+[ext_resource type="Texture2D" uid="uid://bugt0hl182m6t" path="res://Assets/Art/sad_chin_animation.png" id="2_4qimf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tupiy"]
-size = Vector2(116, 104)
+size = Vector2(142, 134)
+
+[sub_resource type="Animation" id="Animation_kuo37"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_ukbko"]
+resource_name = "SadChin"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1, 0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hhmys"]
+_data = {
+"RESET": SubResource("Animation_kuo37"),
+"SadChin": SubResource("Animation_ukbko")
+}
 
 [sub_resource type="GDScript" id="GDScript_4o4sv"]
 script/source = "extends Area2D
 "
 
-[node name="Enemy" type="CharacterBody2D"]
+[node name="Enemy" type="CharacterBody2D" groups=["Enemy"]]
 collision_layer = 3
 collision_mask = 3
 platform_floor_layers = 1
@@ -18,17 +56,31 @@ platform_wall_layers = 2
 script = ExtResource("1_66ioj")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("2_sqqug")
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("2_4qimf")
+hframes = 2
+frame = 1
+region_rect = Rect2(0, 0, 400, 450)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 12)
 shape = SubResource("RectangleShape2D_tupiy")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Sprite2D")
+autoplay = "SadChin"
+libraries = {
+"": SubResource("AnimationLibrary_hhmys")
+}
+
 [node name="PlayerDetector" type="Area2D" parent="."]
+collision_layer = 4
 script = SubResource("GDScript_4o4sv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector"]
+position = Vector2(0, 12)
+scale = Vector2(1.1, 1.1)
 shape = SubResource("RectangleShape2D_tupiy")
+debug_color = Color(0.890196, 0.247059, 0.533333, 0.419608)
 
-[connection signal="body_entered" from="PlayerDetector" to="." method="OnPlayerDetectorBodyEntered"]
-[connection signal="body_exited" from="PlayerDetector" to="." method="OnPlayerDetectorBodyExited"]
+[connection signal="area_entered" from="PlayerDetector" to="." method="_on_player_detector_area_entered"]
