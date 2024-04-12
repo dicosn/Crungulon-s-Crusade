@@ -115,6 +115,7 @@ label_settings = ExtResource("3_dt5j1")
 script = ExtResource("3_wltef")
 
 [node name="VelocityLabel" type="Label" parent="CanvasLayer"]
+visible = false
 offset_left = 12.0
 offset_top = 173.0
 offset_right = 81.0
@@ -123,6 +124,7 @@ text = "100"
 label_settings = ExtResource("3_dt5j1")
 
 [node name="PositionLabel" type="Label" parent="CanvasLayer"]
+visible = false
 offset_left = 12.0
 offset_top = 248.0
 offset_right = 81.0
@@ -132,9 +134,9 @@ label_settings = ExtResource("3_dt5j1")
 
 [node name="HealthLabel" type="Label" parent="CanvasLayer"]
 offset_left = 12.0
-offset_top = 326.0
+offset_top = 150.0
 offset_right = 81.0
-offset_bottom = 384.0
+offset_bottom = 208.0
 text = "100"
 label_settings = ExtResource("3_dt5j1")
 script = ExtResource("6_mic76")

@@ -14,6 +14,7 @@ var gcap = 1500
 @export var ct_thresh = 0.067
 var stopped_jumping = false
 var pause_gravity = false
+var uphill_run = false
 
 #jump time vars
 var jump_time = 0.0
@@ -73,7 +74,7 @@ func _process(delta):
 			air_time = ct_thresh
 			jump_time = 0
 			stopped_jumping = false
-
+		
 # If holding down jump
 	if Input.is_key_pressed(KEY_SPACE) and not stopped_jumping:
 		# And threshold not reached
@@ -89,14 +90,47 @@ func _process(delta):
 	if is_on_floor():
 		air_time = 0
 		jump_time = 0
+		floor_snap_length = 30
+		floor_max_angle = 1.5
 	else:
+		floor_snap_length = 1
+		floor_max_angle = 0.785398
 		if air_time >= ct_thresh:
 			velocity.y += min(gcap, delta * gravity)
 		air_time += delta
+#Keeping player on the slope 	
+	if get_floor_angle() > 0:
+		if abs(get_position_delta().x) < 16:
+			topspeed = 1500
+		elif abs(get_position_delta().x) > 18:
+			topspeed = 800
+	else:
+		topspeed = 1000
 
+	#print(get_position_delta().x)
+	apply_floor_snap()
+	
 	move_and_slide()
 
 
 func _on_hurtbox_body_entered(body):
 	if(body.is_in_group("Enemy")):
 		on_hit()
+
+func uphillCheck():
+	var horizontal_movement = false
+	var floorCheck = false
+	var upCheck = false
+	if Input.is_key_pressed(KEY_LEFT) || Input.is_key_pressed(KEY_RIGHT):
+		horizontal_movement = true
+		#print ("moving horizontal")
+	if is_on_floor():
+		floorCheck = true
+		#print ("on floor")
+	if velocity.y > 0:
+		#print ("going up")
+		upCheck = true
+	if horizontal_movement && floorCheck && upCheck:
+		return true
+	else:
+		return false
