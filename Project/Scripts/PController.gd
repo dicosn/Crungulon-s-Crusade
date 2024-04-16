@@ -24,7 +24,9 @@ var _leftSprite: Sprite2D
 var _jumpSprite: Sprite2D
 var _idleSprite: Sprite2D
 var _rightSprite: Sprite2D
+var _stream_player = AudioStreamPlayer
 @export var health = 5
+
 
 func h_input():
 	#more affects the turnaround time
@@ -51,6 +53,7 @@ func _ready():
 	_idleSprite = get_node("IdleSprite")
 	_rightSprite = get_node("RightSprite")
 	_jumpSprite = get_node("JumpSprite")
+	_stream_player = get_node("JumpSound")
 
 func on_hit():
 	health -= 1
@@ -82,11 +85,13 @@ func _process(delta):
 			# Keep jumping
 			velocity.y = -jumpvelocity * 1.25
 			jump_time += delta
+			_stream_player.play()
 
 	if not Input.is_key_pressed(KEY_SPACE):
 		jump_time = jt_thresh
 		stopped_jumping = true
-
+		
+		
 	if is_on_floor():
 		air_time = 0
 		jump_time = 0

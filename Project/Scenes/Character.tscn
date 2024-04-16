@@ -52,5 +52,7 @@ scale = Vector2(1.05, 1.05)
 shape = SubResource("RectangleShape2D_ax4ij")
 debug_color = Color(0.941176, 0.0941176, 0.54902, 0.419608)
 
+[node name="JumpSound" type="AudioStreamPlayer" parent="."]
+
 [connection signal="input_event" from="." to="." method="OnInputEvent"]
 [connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]
