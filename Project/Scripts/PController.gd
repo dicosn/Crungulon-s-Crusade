@@ -37,7 +37,7 @@ func h_input():
 		if(velocity.x < 0):
 			more = 2
 		velocity.x = min(velocity.x + accel*more, topspeed)
-	elif(Input.is_action_just_pressed("move_left")):
+	elif(Input.is_action_pressed("move_left")):
 		_idleSprite.flip_h = true
 		if(velocity.x > 0):
 			more = 2
