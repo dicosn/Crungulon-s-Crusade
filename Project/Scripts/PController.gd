@@ -13,6 +13,7 @@ var gcap = 1500
 @export var air_time = 0.0
 @export var ct_thresh = 0.067
 var stopped_jumping = false
+var can_jump = false
 var pause_gravity = false
 var uphill_run = false
 
@@ -24,7 +25,9 @@ var _leftSprite: Sprite2D
 var _jumpSprite: Sprite2D
 var _idleSprite: Sprite2D
 var _rightSprite: Sprite2D
-@export var health = 5
+var _stream_player = AudioStreamPlayer
+@export var health = 4
+
 
 func h_input():
 	#more affects the turnaround time
@@ -34,7 +37,7 @@ func h_input():
 		if(velocity.x < 0):
 			more = 2
 		velocity.x = min(velocity.x + accel*more, topspeed)
-	elif(Input.is_action_pressed("move_left")):
+	elif(Input.is_action_just_pressed("move_left")):
 		_idleSprite.flip_h = true
 		if(velocity.x > 0):
 			more = 2
@@ -51,19 +54,27 @@ func _ready():
 	_idleSprite = get_node("IdleSprite")
 	_rightSprite = get_node("RightSprite")
 	_jumpSprite = get_node("JumpSprite")
+	_stream_player = get_node("JumpSound")
 
 func on_hit():
 	health -= 1
+	_change_color()
 	print(health)
+
 	if (health <= 0):
 		print("You are Dead womp womp")
 		get_tree().change_scene_to_file("res://Scenes/hud.tscn")
+
+func _change_color():
+	modulate = Color(1,0,0)
+	await get_tree().create_timer(0.1).timeout
+	modulate = Color(1,1,1)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	h_input()
 	# If jump button pressed
-	if Input.is_key_pressed(KEY_SPACE):
+	if Input.is_action_just_pressed("ui_accept"):
 		# And on the floor
 		if is_on_floor():
 			# Then you can jump
@@ -76,17 +87,21 @@ func _process(delta):
 			stopped_jumping = false
 		
 # If holding down jump
-	if Input.is_key_pressed(KEY_SPACE) and not stopped_jumping:
+	if Input.is_action_pressed("ui_accept") and not stopped_jumping:
 		# And threshold not reached
-		if jump_time < jt_thresh:
+		if jump_time < jt_thresh and not is_on_floor():
 			# Keep jumping
 			velocity.y = -jumpvelocity * 1.25
 			jump_time += delta
-
-	if not Input.is_key_pressed(KEY_SPACE):
+			_stream_player.play()
+	
+	if not Input.is_action_pressed("ui_accept"):
 		jump_time = jt_thresh
 		stopped_jumping = true
-
+		
+	if is_on_ceiling():
+		stopped_jumping = true	
+		
 	if is_on_floor():
 		air_time = 0
 		jump_time = 0
@@ -109,13 +124,20 @@ func _process(delta):
 
 	#print(get_position_delta().x)
 	apply_floor_snap()
-	
 	move_and_slide()
-
 
 func _on_hurtbox_body_entered(body):
 	if(body.is_in_group("Enemy")):
 		on_hit()
+
+func _on_hurtbox_area_entered(area):
+		if(area.is_in_group("Health")):
+			gain_health()
+			
+func gain_health():
+	if (health < 5): 
+		health += 1
+		print("gained health")
 
 func uphillCheck():
 	var horizontal_movement = false
@@ -134,3 +156,6 @@ func uphillCheck():
 		return true
 	else:
 		return false
+
+
+
