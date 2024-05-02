@@ -129,6 +129,9 @@ func _process(delta):
 func _on_hurtbox_body_entered(body):
 	if(body.is_in_group("Enemy")):
 		on_hit()
+	if(body.is_in_group("Platform")):
+		pause_gravity = true
+		print("touched platform")
 
 func _on_hurtbox_area_entered(area):
 	if(area.is_in_group("Health")):
