@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cscu2rwtgbjwy"]
+
+[ext_resource type="PackedScene" uid="uid://ckyr6ep3x3lbc" path="res://Scenes/moving_platform.tscn" id="1_mk0jq"]
+
+[node name="MovingPlatform" instance=ExtResource("1_mk0jq")]
+horizontal = false
+vertical = true

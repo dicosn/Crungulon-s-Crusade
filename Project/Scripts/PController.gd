@@ -63,7 +63,7 @@ func on_hit():
 
 	if (health <= 0):
 		print("You are Dead womp womp")
-		get_tree().change_scene_to_file("res://Scenes/hud.tscn")
+		die()
 
 func _change_color():
 	modulate = Color(1,0,0)
@@ -129,16 +129,21 @@ func _process(delta):
 func _on_hurtbox_body_entered(body):
 	if(body.is_in_group("Enemy")):
 		on_hit()
+	if(body.is_in_group("Platform")):
+		pause_gravity = true
+		print("touched platform")
 
 func _on_hurtbox_area_entered(area):
-		if(area.is_in_group("Health")):
-			gain_health()
+	if(area.is_in_group("Health")):
+		gain_health()
 			
 func gain_health():
 	if (health < 5): 
 		health += 1
 		print("gained health")
-
+func die():
+	get_tree().change_scene_to_file("res://Scenes/hud.tscn")
+	
 func uphillCheck():
 	var horizontal_movement = false
 	var floorCheck = false

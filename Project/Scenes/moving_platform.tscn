@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://ckyr6ep3x3lbc"]
+
+[ext_resource type="Texture2D" uid="uid://coguv6iflh32w" path="res://Assets/Ground Sprites/GreenGroundTilemap.png" id="1_3lqbn"]
+[ext_resource type="Script" path="res://Scripts/moving_platform.gd" id="1_vb6nb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7ce6e"]
+size = Vector2(300, 50)
+
+[node name="MovingPlatform" type="CharacterBody2D" groups=["Platform"]]
+motion_mode = 1
+script = ExtResource("1_vb6nb")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_3lqbn")
+region_enabled = true
+region_rect = Rect2(350, 300, 300, 50)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_7ce6e")
